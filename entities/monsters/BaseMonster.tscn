@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dc468wyvg3gtb"]
+[gd_scene load_steps=3 format=3 uid="uid://dc468wyvg3gtb"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_3dawq"]
+[ext_resource type="Script" uid="uid://chbsh6fscghxc" path="res://entities/monsters/base_monster.gd" id="1_sl6m7"]
+[ext_resource type="PackedScene" uid="uid://btiour3vke172" path="res://utils/sprite_loader/sprite_loader.tscn" id="2_sl6m7"]
 
 [node name="BaseMonster" type="Area2D"]
+script = ExtResource("1_sl6m7")
+monster_sprite = 0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_3dawq")
+[node name="SpriteLoader" parent="." instance=ExtResource("2_sl6m7")]
