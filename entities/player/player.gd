@@ -13,6 +13,10 @@ func get_movement():
     var input = Input.get_vector("left", "right", "up", "down")
     velocity = input * speed;
 
+func eat_food(exp_gained: float, damage: float):
+    # queue nom sound
+    current_hp -= damage
+    current_exp += exp_gained
 
 func _physics_process(_delta: float) -> void:
     get_movement()
