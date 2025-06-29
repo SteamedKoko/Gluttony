@@ -5,8 +5,12 @@
 
 [node name="Arena" type="Node2D"]
 
+[node name="BaseMonster2" parent="." instance=ExtResource("2_8trdl")]
+position = Vector2(364, 76)
+
 [node name="Player" parent="." instance=ExtResource("1_1qjuf")]
 position = Vector2(598, 303)
 
 [node name="BaseMonster" parent="." instance=ExtResource("2_8trdl")]
 position = Vector2(244, 149)
+monster_sprite = 0

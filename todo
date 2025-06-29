@@ -1,0 +1,55 @@
+concept:
+the more you have the worse it is
+
+- food are the monsters
+
+vampire survivor type:
+    * destroy the foods, level up
+    * level ups make you stronger (some kinda passive skill like aura that does damage, shoots random pellets, etc), but give you something detrimental like draining your health, lowering defence, etc, like making a deal with libra
+    * the goal is to make it to the end of the stage
+
+game mechanics:
+    * player starts with 100 health and a time limit 5 mins
+    * upon level they lose 10 max health with another nerf (take more damage, make enemies bigger, slower movement, enemies now shoot death pellets, etc)
+    * upon max level, stay at 1hp can keep getting more nerfs
+    * there will be clues to where the exit is upon killing enemies?? or item pickup
+    * Finishing will require finding the exit
+
+
+Gluttony
+
+work to do:
+* player
+    * movement - OK
+    * attributes - hp, speed, damage
+    * eat upon touching food (should take damage and get exp)
+    * eat upon destroying food (with a skill, just get exp)
+    * leveling
+    * get exp
+    * camera follows player
+* monsters
+    * cookie cutter sprites from the foods - OK
+    * movement towards player - OK
+    * spawning
+    * attributes: hp, dmg, movespeed
+* spawning patterns:
+    * rate of spawning
+    * number of monsters spawning
+    * type spawning
+* level up
+    * choose from a randomized skill, paired with a randomized detriment
+    * subtract from max hp
+* skills
+    * aura
+    * rotating sharp thingies
+    * shoot fire in a direction
+    * shoot death pellets
+    * lightning
+* detriments
+    * take more damage
+    * make enemies bigger
+    * make enemies lower health
+    * move slower
+    * enemies shoot death pellets
+    * make enemies faster
+    * more monsters spawn

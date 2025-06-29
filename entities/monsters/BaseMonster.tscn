@@ -1,10 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://dc468wyvg3gtb"]
 
 [ext_resource type="Script" uid="uid://chbsh6fscghxc" path="res://entities/monsters/base_monster.gd" id="1_sl6m7"]
-[ext_resource type="PackedScene" uid="uid://btiour3vke172" path="res://utils/sprite_loader/sprite_loader.tscn" id="2_sl6m7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl6m7"]
 
 [node name="BaseMonster" type="Area2D"]
+collision_layer = 4
+collision_mask = 13
 script = ExtResource("1_sl6m7")
-monster_sprite = 0
 
-[node name="SpriteLoader" parent="." instance=ExtResource("2_sl6m7")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sl6m7")
