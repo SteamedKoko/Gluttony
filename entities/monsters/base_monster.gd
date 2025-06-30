@@ -9,7 +9,7 @@ extends Area2D
 var anim: SpriteLoader
 var veclocity: float = 100
 
-var exp: float = 1
+var exp_value: float = 1
 var damage: float = 1
 
 func _ready() -> void:
@@ -27,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_body_entered(body:Node2D) -> void:
 	if body is Player:
-		body.eat_food(exp, damage)
+		body.eat_food(exp_value, damage)
 		perish()
 
 func perish() -> void:

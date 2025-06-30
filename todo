@@ -22,7 +22,7 @@ work to do:
 * player
     * movement - OK
     * attributes - hp, speed, damage
-    * eat upon touching food (should take damage and get exp)
+    * eat upon touching food (should take damage and get exp) - ok
     * eat upon destroying food (with a skill, just get exp)
     * leveling
     * get exp

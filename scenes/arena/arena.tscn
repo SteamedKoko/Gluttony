@@ -1,16 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://gwslf667jj30"]
 
 [ext_resource type="PackedScene" uid="uid://cetseqdkeuyvr" path="res://entities/player/player.tscn" id="1_1qjuf"]
-[ext_resource type="PackedScene" uid="uid://dc468wyvg3gtb" path="res://entities/monsters/BaseMonster.tscn" id="2_8trdl"]
+[ext_resource type="PackedScene" uid="uid://c2rh1w6xsy484" path="res://entities/spawner/spawner.tscn" id="2_8trdl"]
 
 [node name="Arena" type="Node2D"]
-
-[node name="BaseMonster2" parent="." instance=ExtResource("2_8trdl")]
-position = Vector2(364, 76)
 
 [node name="Player" parent="." instance=ExtResource("1_1qjuf")]
 position = Vector2(598, 303)
 
-[node name="BaseMonster" parent="." instance=ExtResource("2_8trdl")]
-position = Vector2(244, 149)
-monster_sprite = 0
+[node name="Spawner" parent="." instance=ExtResource("2_8trdl")]
