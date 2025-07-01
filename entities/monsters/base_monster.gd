@@ -1,9 +1,9 @@
 class_name BaseMonster
-extends Area2D
+extends CharacterBody2D
 
 @export var monster_sprite = GlobalSpriteAssets.MonsterSprites.PIE
 
-@onready var player = get_parent().get_node("Player")
+@onready var player = get_tree().get_nodes_in_group("player")[0]
 
 
 var anim: SpriteLoader
@@ -11,6 +11,9 @@ var veclocity: float = 100
 
 var exp_value: float = 1
 var damage: float = 1
+
+func _init(sprite: GlobalSpriteAssets.MonsterSprites):
+	monster_sprite = sprite
 
 func _ready() -> void:
 	var res = GlobalSpriteAssets.MONSTER_RESOURCES.get(monster_sprite).resource
@@ -21,8 +24,7 @@ func _ready() -> void:
 	anim.play()
 
 func _physics_process(_delta: float) -> void:
-	if(player):
-		self.position = self.position.move_toward(player.position, _delta * veclocity)
+	pass
 	
 
 func _on_body_entered(body:Node2D) -> void:

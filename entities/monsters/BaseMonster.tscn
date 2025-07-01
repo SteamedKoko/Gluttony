@@ -4,12 +4,11 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sl6m7"]
 
-[node name="BaseMonster" type="Area2D"]
+[node name="BaseMonster" type="CharacterBody2D"]
+position = Vector2(-1, 0)
 collision_layer = 4
 collision_mask = 13
 script = ExtResource("1_sl6m7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_sl6m7")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,5 +1,9 @@
 class_name GlobalSpriteAssets
 
+static func get_random_monster() -> MonsterSprites:
+    var randomMonsterString = GlobalSpriteAssets.MonsterSprites.keys()[randi() % GlobalSpriteAssets.MonsterSprites.size()]
+    return MonsterSprites.get(randomMonsterString)
+
 const MONSTER_RESOURCES = {
     MonsterSprites.AVOCADO : { "resource" = preload("res://entities/monsters/sprites/avocado.png") },
     MonsterSprites.BOBA: { "resource" = preload("res://entities/monsters/sprites/boba.png") },

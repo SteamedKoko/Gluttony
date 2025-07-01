@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://gwslf667jj30"]
+[gd_scene load_steps=4 format=3 uid="uid://gwslf667jj30"]
 
 [ext_resource type="PackedScene" uid="uid://cetseqdkeuyvr" path="res://entities/player/player.tscn" id="1_1qjuf"]
+[ext_resource type="Texture2D" uid="uid://bedc6dmhufpr5" path="res://scenes/arena/A+_bft.png" id="1_5tue2"]
 [ext_resource type="PackedScene" uid="uid://c2rh1w6xsy484" path="res://entities/spawner/spawner.tscn" id="2_8trdl"]
 
 [node name="Arena" type="Node2D"]
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(510.25, 276)
+scale = Vector2(1.51846, 1.54154)
+texture = ExtResource("1_5tue2")
 
 [node name="Player" parent="." instance=ExtResource("1_1qjuf")]
 position = Vector2(598, 303)

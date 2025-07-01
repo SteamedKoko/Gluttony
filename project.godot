@@ -15,6 +15,10 @@ run/main_scene="uid://gwslf667jj30"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalSprites="*res://globals/global_sprite_assets.gd"
+
 [input]
 
 up={
@@ -47,6 +51,7 @@ right={
 2d_physics/layer_1="Wall"
 2d_physics/layer_3="Monster"
 2d_physics/layer_4="Player"
+2d_physics/layer_5="Boid"
 
 [rendering]
 
