@@ -51,7 +51,7 @@ right={
 2d_physics/layer_1="Wall"
 2d_physics/layer_3="Monster"
 2d_physics/layer_4="Player"
-2d_physics/layer_5="Boid"
+2d_physics/layer_5="SoftCollision"
 
 [rendering]
 
