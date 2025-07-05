@@ -2,6 +2,7 @@ class_name GlobalSpriteAssets
 extends Node
 
 const MONSTER_SCENE: PackedScene = preload("res://entities/monsters/BaseMonster.tscn")
+const CONSUMABLE_MONSTER_SCENE: PackedScene = preload("res://entities/monsters/consumable_monster.tscn")
 
 const DEFAULT_MONSTER_WIDTH: int = 35
 const DEFAULT_MONSTER_HEIGHT: int = 35
@@ -20,7 +21,7 @@ static func get_monster_asset(sprite: MonsterSprites) -> BaseMonster:
 	monster_asset.get_or_add("frames", DEFAULT_MONSTER_FRAMES)
 	monster_asset.get_or_add("row", DEFAULT_MONSTER_ROW)
 	
-	var new_monster: BaseMonster = MONSTER_SCENE.instantiate()
+	var new_monster: BaseMonster = CONSUMABLE_MONSTER_SCENE.instantiate()
 
 	var _sprite_loader = SpriteLoader.new()
 	_sprite_loader.load_sprite(monster_asset.resource, monster_asset.width, monster_asset.height, monster_asset.frames, monster_asset.row) 

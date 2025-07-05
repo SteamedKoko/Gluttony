@@ -1,20 +1,3 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc468wyvg3gtb"]
-
-[ext_resource type="Script" uid="uid://chbsh6fscghxc" path="res://entities/monsters/base_monster.gd" id="1_sl6m7"]
-[ext_resource type="PackedScene" uid="uid://cmiuc2trhsyq7" path="res://utils/soft_collision/soft_collision.tscn" id="2_sl6m7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl6m7"]
+[gd_scene format=3 uid="uid://dc468wyvg3gtb"]
 
 [node name="BaseMonster" type="CharacterBody2D"]
-disable_mode = 1
-collision_layer = 4
-collision_mask = 9
-script = ExtResource("1_sl6m7")
-metadata/_custom_type_script = "uid://chbsh6fscghxc"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_sl6m7")
-debug_color = Color(0.985773, 0, 0.330404, 0.42)
-
-[node name="SoftCollision" parent="." instance=ExtResource("2_sl6m7")]
-scale = Vector2(1.425, 1.425)

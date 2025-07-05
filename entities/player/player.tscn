@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cetseqdkeuyvr"]
+[gd_scene load_steps=7 format=3 uid="uid://cetseqdkeuyvr"]
 
 [ext_resource type="Script" uid="uid://dbmggphqcyl8" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://buj8jnnj66ub8" path="res://entities/player/sprites/v1_4frame3.png" id="1_symyc"]
+[ext_resource type="PackedScene" uid="uid://cy0ic1sihaot4" path="res://utils/hurt_box/hurt_box.tscn" id="3_sglur"]
+[ext_resource type="PackedScene" uid="uid://dtqtnwsjxg55d" path="res://utils/health/health.tscn" id="4_bls4j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
 size = Vector2(38, 21)
@@ -18,10 +20,11 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_layer = 8
+collision_layer = 0
 script = ExtResource("1_abrql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, 7.5)
 shape = SubResource("RectangleShape2D_abrql")
 
@@ -32,3 +35,17 @@ sprite_frames = SubResource("SpriteFrames_sglur")
 [node name="Camera2D" type="Camera2D" parent="."]
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_sglur")]
+collision_layer = 8
+health = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(2, 7.5)
+shape = SubResource("RectangleShape2D_abrql")
+
+[node name="Health" parent="." instance=ExtResource("4_bls4j")]
+max_health = 100.0
+
+[connection signal="took_damage" from="HurtBox" to="." method="_on_hurt_box_took_damage"]
+[connection signal="health_delpleted" from="Health" to="." method="_on_health_health_delpleted"]
