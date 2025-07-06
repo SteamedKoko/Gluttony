@@ -20,18 +20,8 @@ Gluttony
 
 work to do:
 * player
-    * movement - OK
     * attributes - hp, speed, damage
-    * eat upon touching food (should take damage and get exp) - ok
-    * eat upon destroying food (with a skill, just get exp)
-    * leveling
-    * get exp
-    * camera follows player
 * monsters
-    * cookie cutter sprites from the foods - OK
-    * movement towards player - OK
-    * spawning
-    * attributes: hp, dmg, movespeed
 * spawning patterns:
     * rate of spawning
     * number of monsters spawning
@@ -53,3 +43,25 @@ work to do:
     * enemies shoot death pellets
     * make enemies faster
     * more monsters spawn
+
+
+
+DONE
+
+* player
+    * movement
+    * eat upon touching food (should take damage and get exp)
+    * eat upon destroying food (with a skill, just get exp)
+    * leveling
+    * get exp
+    * camera follows player
+* monsters
+    * cookie cutter sprites from the foods
+    * movement towards player
+    * spawning
+    * attributes: hp, dmg, movespeed
+* spawning patterns:
+* level up
+* skills
+    * dash
+* detriments

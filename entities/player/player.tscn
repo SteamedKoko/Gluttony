@@ -47,5 +47,8 @@ shape = SubResource("RectangleShape2D_abrql")
 [node name="Health" parent="." instance=ExtResource("4_bls4j")]
 max_health = 100.0
 
+[node name="DashCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="took_damage" from="HurtBox" to="." method="_on_hurt_box_took_damage"]
 [connection signal="health_delpleted" from="Health" to="." method="_on_health_health_delpleted"]
