@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://bm36y6s1i2gu4"]
+
+[ext_resource type="Script" uid="uid://yl8d3y4n64eg" path="res://entities/skills/base_skill.gd" id="1_pyttu"]
+[ext_resource type="Texture2D" uid="uid://b5haco536oqnd" path="res://entities/skills/sprites/lightning.png" id="2_rljlk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj8le"]
+atlas = ExtResource("2_rljlk")
+region = Rect2(0, 0, 80, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l5rl"]
+atlas = ExtResource("2_rljlk")
+region = Rect2(80, 0, 80, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgho0"]
+atlas = ExtResource("2_rljlk")
+region = Rect2(160, 0, 80, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5r6t"]
+atlas = ExtResource("2_rljlk")
+region = Rect2(240, 0, 80, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmfnm"]
+atlas = ExtResource("2_rljlk")
+region = Rect2(320, 0, 80, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otbcq"]
+atlas = ExtResource("2_rljlk")
+region = Rect2(400, 0, 80, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76kkw"]
+atlas = ExtResource("2_rljlk")
+region = Rect2(480, 0, 80, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjx3i"]
+atlas = ExtResource("2_rljlk")
+region = Rect2(560, 0, 80, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y2fqs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj8le")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7l5rl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgho0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5r6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmfnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otbcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76kkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjx3i")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rljlk"]
+size = Vector2(111, 70)
+
+[node name="Lightning" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_pyttu")
+metadata/_custom_type_script = "uid://yl8d3y4n64eg"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_y2fqs")
+frame = 7
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.5, 136)
+shape = SubResource("RectangleShape2D_rljlk")
+disabled = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq0pxhpgrk6oq"]
+[gd_scene load_steps=8 format=3 uid="uid://bq0pxhpgrk6oq"]
 
 [ext_resource type="Script" uid="uid://c2eys7m02t08e" path="res://entities/monsters/consumable_monster.gd" id="1_8t66q"]
 [ext_resource type="PackedScene" uid="uid://cmiuc2trhsyq7" path="res://utils/soft_collision/soft_collision.tscn" id="2_fphre"]
 [ext_resource type="PackedScene" uid="uid://cd07nhfaef5cy" path="res://utils/attack/attack.tscn" id="3_8t66q"]
+[ext_resource type="PackedScene" uid="uid://cy0ic1sihaot4" path="res://utils/hurt_box/hurt_box.tscn" id="4_34hvv"]
+[ext_resource type="PackedScene" uid="uid://dtqtnwsjxg55d" path="res://utils/health/health.tscn" id="5_fcyur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfm1j"]
 
@@ -10,7 +12,6 @@
 
 [node name="ConsumableMonster" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 9
 script = ExtResource("1_8t66q")
 metadata/_custom_type_script = "uid://chbsh6fscghxc"
 
@@ -24,10 +25,23 @@ visible = false
 scale = Vector2(1.425, 1.425)
 
 [node name="Attack" parent="." instance=ExtResource("3_8t66q")]
+visible = false
 collision_mask = 8
 damage = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+visible = false
 shape = SubResource("RectangleShape2D_8t66q")
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("4_34hvv")]
+collision_layer = 4
+health = NodePath("../Health")
+invulerability_time_seconds = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_8t66q")
+
+[node name="Health" parent="." instance=ExtResource("5_fcyur")]
+max_health = 50.0
 
 [connection signal="dealt_damage" from="Attack" to="." method="_on_attack_dealt_damage"]

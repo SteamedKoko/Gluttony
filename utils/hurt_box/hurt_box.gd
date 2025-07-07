@@ -7,6 +7,7 @@ extends Area2D
 signal took_damage
 
 func receive_damage(damage: float):
+	print('ow ', damage)
 	if monitoring:
 		iframes()
 		health.take_health(damage)
