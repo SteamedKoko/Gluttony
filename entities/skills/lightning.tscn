@@ -1,7 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bm36y6s1i2gu4"]
+[gd_scene load_steps=14 format=3 uid="uid://bm36y6s1i2gu4"]
 
 [ext_resource type="Script" uid="uid://yl8d3y4n64eg" path="res://entities/skills/base_skill.gd" id="1_pyttu"]
 [ext_resource type="Texture2D" uid="uid://b5haco536oqnd" path="res://entities/skills/sprites/lightning.png" id="2_rljlk"]
+[ext_resource type="PackedScene" uid="uid://cd07nhfaef5cy" path="res://utils/attack/attack.tscn" id="2_vj8le"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rljlk"]
+size = Vector2(111, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vj8le"]
 atlas = ExtResource("2_rljlk")
@@ -67,24 +71,19 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rljlk"]
-size = Vector2(111, 70)
-
-[node name="Lightning" type="Area2D"]
-collision_layer = 0
-collision_mask = 4
+[node name="Lightning" type="Node2D"]
 script = ExtResource("1_pyttu")
 metadata/_custom_type_script = "uid://yl8d3y4n64eg"
+
+[node name="Attack" parent="." instance=ExtResource("2_vj8le")]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2(-5.5, 136)
+shape = SubResource("RectangleShape2D_rljlk")
+disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y2fqs")
 frame = 7
 frame_progress = 1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5.5, 136)
-shape = SubResource("RectangleShape2D_rljlk")
-disabled = true
-
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

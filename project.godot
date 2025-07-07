@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 GlobalSprites="*res://globals/global_sprite_assets.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/dpi/allow_hidpi=false
+
 [input]
 
 up={

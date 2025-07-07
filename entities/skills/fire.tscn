@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://c66r3xjthspcv"]
+[gd_scene load_steps=22 format=3 uid="uid://c66r3xjthspcv"]
 
 [ext_resource type="Script" uid="uid://yl8d3y4n64eg" path="res://entities/skills/base_skill.gd" id="1_vm21n"]
 [ext_resource type="Texture2D" uid="uid://c6owp5podsk4s" path="res://entities/skills/sprites/flame.webp" id="2_d3yk2"]
+[ext_resource type="Script" uid="uid://1ab276wrgw0r" path="res://utils/attack/attack.gd" id="3_vb2om"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vb2om"]
 atlas = ExtResource("2_d3yk2")
@@ -151,19 +152,26 @@ animations = [{
 points = PackedVector2Array(-30.075, -3, 10, -13, 30, -10, 33, 0, 30, 10, 10, 13, -30.075, 3)
 
 [node name="Fire" type="Area2D"]
-scale = Vector2(-2, -2)
+scale = Vector2(-2, 1)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_vm21n")
 time_to_cast = 1.0
 frame_to_enable_collider = 4
 frame_to_end_collider = 16
-damage = 5.0
 metadata/_custom_type_script = "uid://yl8d3y4n64eg"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nankg")
+frame = 23
+frame_progress = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Attack" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_vb2om")
+metadata/_custom_type_script = "uid://1ab276wrgw0r"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
 position = Vector2(-2, 0)
 shape = SubResource("ConvexPolygonShape2D_d3yk2")

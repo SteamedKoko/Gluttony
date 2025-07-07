@@ -12,7 +12,7 @@ scale = Vector2(1.51846, 1.54154)
 texture = ExtResource("1_5tue2")
 
 [node name="Spawner" parent="." instance=ExtResource("2_8trdl")]
-position = Vector2(77, 50)
+position = Vector2(439, 278)
 
 [node name="Fire" parent="." instance=ExtResource("3_5tue2")]
-position = Vector2(77, 50)
+position = Vector2(439, 278)

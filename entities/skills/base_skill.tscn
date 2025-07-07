@@ -2,8 +2,5 @@
 
 [ext_resource type="Script" uid="uid://yl8d3y4n64eg" path="res://entities/skills/base_skill.gd" id="1_ockjt"]
 
-[node name="BaseSkill" type="Area2D"]
-collision_layer = 4
-collision_mask = 0
+[node name="BaseSkill" type="Node2D"]
 script = ExtResource("1_ockjt")
-metadata/_custom_type_script = "uid://1ab276wrgw0r"
