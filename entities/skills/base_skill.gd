@@ -26,10 +26,10 @@ func _ready() -> void:
 
 
 func _on_execute_timeout() -> void:
-	print('go', execute_timer.wait_time)
 	animated_sprite.play()
 	animated_sprite.visible = true
 	pass
+
 
 func _on_animated_sprite_changed() -> void:
 	if animated_sprite.frame == frame_to_enable_collider:
@@ -37,6 +37,7 @@ func _on_animated_sprite_changed() -> void:
 
 	if animated_sprite.frame == frame_to_end_collider:
 		collider.disabled = true 
+
 
 func _on_animated_sprite_finished() -> void:
 	collider.disabled = true 

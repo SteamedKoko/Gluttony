@@ -5,7 +5,7 @@ extends Area2D
 
 signal dealt_damage
 
-func _on_area_entered(area:Area2D) -> void:
+func _on_area_entered(area: Area2D) -> void:
     print('entered hurtbox')
     if area is HurtBox:
         area.receive_damage(damage)
