@@ -65,3 +65,15 @@ DONE
 * skills
     * dash
 * detriments
+
+
+
+fire
+    hits 5 times
+
+lightning 
+    hits once
+
+sharp things
+    hits every time a sharp thing collides
+    only once per collision

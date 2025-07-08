@@ -40,7 +40,6 @@ drag_vertical_enabled = true
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("3_sglur")]
 collision_layer = 8
 health = NodePath("../Health")
-invulerability_time_seconds = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(2, 7.5)

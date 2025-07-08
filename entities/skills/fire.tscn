@@ -148,13 +148,11 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_d3yk2"]
-points = PackedVector2Array(-30.075, -3, 10, -13, 30, -10, 33, 0, 30, 10, 10, 13, -30.075, 3)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb2om"]
+size = Vector2(63, 20)
 
-[node name="Fire" type="Area2D"]
+[node name="Fire" type="Node2D"]
 scale = Vector2(-2, 1)
-collision_layer = 0
-collision_mask = 4
 script = ExtResource("1_vm21n")
 time_to_cast = 1.0
 frame_to_enable_collider = 4
@@ -170,8 +168,10 @@ frame_progress = 1.0
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("3_vb2om")
+damage_cooldown = 0.3
+damage_type = 1
 metadata/_custom_type_script = "uid://1ab276wrgw0r"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
-position = Vector2(-2, 0)
-shape = SubResource("ConvexPolygonShape2D_d3yk2")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Attack"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_vb2om")

@@ -1,12 +1,21 @@
 class_name Attack
 extends Area2D
 
+enum DAMAGE_TYPE {
+	NONE,
+	FIRE,
+	LIGHTNING
+}
+
 @export var damage: float = 50
+@export var damage_cooldown: float = 0
+@export var damage_type: DAMAGE_TYPE
 
-signal dealt_damage
-
-func _on_area_entered(area: Area2D) -> void:
-	print('entered hurtbox')
-	if area is HurtBox:
-		area.receive_damage(damage)
-		dealt_damage.emit()
+func _physics_process(_delta: float) -> void:
+	var overlap = get_overlapping_areas()
+	for ob in overlap:
+		if(ob is HurtBox):
+			if damage_cooldown == 0:
+				ob.receive_damage(damage)
+			else:
+				ob.receive_continuous_damage(damage, damage_cooldown, str(damage_type))

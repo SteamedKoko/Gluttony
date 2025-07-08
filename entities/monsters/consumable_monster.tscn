@@ -44,4 +44,4 @@ shape = SubResource("RectangleShape2D_8t66q")
 [node name="Health" parent="." instance=ExtResource("5_fcyur")]
 max_health = 50.0
 
-[connection signal="dealt_damage" from="Attack" to="." method="_on_attack_dealt_damage"]
+[connection signal="health_delpleted" from="Health" to="." method="_on_health_health_delpleted"]

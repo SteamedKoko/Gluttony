@@ -73,15 +73,17 @@ animations = [{
 
 [node name="Lightning" type="Node2D"]
 script = ExtResource("1_pyttu")
+time_to_cast = 5.0
+frame_to_enable_collider = 4
 metadata/_custom_type_script = "uid://yl8d3y4n64eg"
 
 [node name="Attack" parent="." instance=ExtResource("2_vj8le")]
 collision_mask = 4
+damage_type = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
 position = Vector2(-5.5, 136)
 shape = SubResource("RectangleShape2D_rljlk")
-disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y2fqs")
