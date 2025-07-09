@@ -21,7 +21,8 @@ Gluttony
 work to do:
 * player
     * attributes - hp, speed, damage
-* monsters
+* monsters:
+    * knockback
 * spawning patterns:
     * rate of spawning
     * number of monsters spawning

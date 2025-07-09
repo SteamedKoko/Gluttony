@@ -19,12 +19,20 @@ var thingies: Array[SharpThingy] = []
 
 func _ready() -> void:
 	var thingy: SharpThingy = sharp_thingy_resource.instantiate()
-	print('prepping child')
 	thingy.sprite_resource = SHARP_THINGY_RESOURCES.get(SharpThingyOptions.KNOIFE).resource
-	print('adding child')
 	thingies.append(thingy)
 	self.add_child(thingy)
 
-func rotate_thingies():
-	pass
-	# thingy
+@export var rotation_speed = 90.0  # Degrees per second, adjustable in editor
+@export var radius = 50.0  # Distance from pivot to object
+
+var current_angle = 0.0  # Tracks the current rotation angle
+
+func _process(delta):
+	# Update the angle based on rotation speed
+	current_angle += deg_to_rad(rotation_speed) * delta
+	# Calculate new position relative to pivot
+	# position = pivot_point + Vector2(cos(current_angle), sin(current_angle)) * radius
+	position = Vector2(cos(current_angle), sin(current_angle)) * radius
+	# Optional: Rotate the object to face the direction of rotation
+	# rotation = current_angle  # Uncomment if you want the object to rotate itself
