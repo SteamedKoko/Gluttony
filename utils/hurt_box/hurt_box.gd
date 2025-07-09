@@ -10,7 +10,6 @@ signal took_damage
 
 func receive_damage(damage: float):
 	if monitoring:
-		print('ow ', damage)
 		iframes()
 		health.take_health(damage)
 		took_damage.emit()
@@ -20,7 +19,6 @@ func receive_continuous_damage(damage: float, dmg_cooldown: float, key: String):
 	if damage_source_dictionary.has(key):
 		return
 
-	print('add ', key, ' to dictionary')
 	damage_source_dictionary[key] = 0
 	var dmg_timer: SceneTreeTimer = get_tree().create_timer(dmg_cooldown)
 	dmg_timer.timeout.connect(remove_damage_timeout.bind(key))
@@ -28,7 +26,6 @@ func receive_continuous_damage(damage: float, dmg_cooldown: float, key: String):
 
 
 func remove_damage_timeout(key: String):
-	print('remove ', key, ' from dictionary')
 	damage_source_dictionary.erase(key)
 
 

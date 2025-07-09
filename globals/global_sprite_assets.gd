@@ -77,3 +77,5 @@ enum MonsterSprites {
 	SPRING_ONION,
 	TEACUP
 }
+
+

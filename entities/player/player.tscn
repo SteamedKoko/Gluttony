@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cetseqdkeuyvr"]
+[gd_scene load_steps=9 format=3 uid="uid://cetseqdkeuyvr"]
 
 [ext_resource type="Script" uid="uid://dbmggphqcyl8" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://buj8jnnj66ub8" path="res://entities/player/sprites/v1_4frame3.png" id="1_symyc"]
 [ext_resource type="PackedScene" uid="uid://cy0ic1sihaot4" path="res://utils/hurt_box/hurt_box.tscn" id="3_sglur"]
 [ext_resource type="PackedScene" uid="uid://dtqtnwsjxg55d" path="res://utils/health/health.tscn" id="4_bls4j"]
 [ext_resource type="PackedScene" uid="uid://c66r3xjthspcv" path="res://entities/skills/fire.tscn" id="5_fkugw"]
+[ext_resource type="Script" uid="uid://bclmmp3h6fi8n" path="res://entities/skills/sharp_thingies/sharp_thingies.gd" id="6_8fjmc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
 size = Vector2(38, 21)
@@ -54,6 +55,10 @@ one_shot = true
 [node name="Fire" parent="." instance=ExtResource("5_fkugw")]
 position = Vector2(-69, 12)
 scale = Vector2(-2, 2)
+
+[node name="SharpThingies" type="Node2D" parent="."]
+script = ExtResource("6_8fjmc")
+metadata/_custom_type_script = "uid://bclmmp3h6fi8n"
 
 [connection signal="took_damage" from="HurtBox" to="." method="_on_hurt_box_took_damage"]
 [connection signal="health_delpleted" from="Health" to="." method="_on_health_health_delpleted"]

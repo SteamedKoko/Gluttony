@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://druqsjvub1osa"]
+
+[ext_resource type="Script" uid="uid://mrx24doqa8im" path="res://entities/skills/sharp_thingies/sharp_thingy.gd" id="1_ucefh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eaaxj"]
+size = Vector2(24.7393, 20)
+
+[node name="SharpThingy" type="Area2D"]
+script = ExtResource("1_ucefh")
+metadata/_custom_type_script = "uid://1ab276wrgw0r"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.242529, 1.43013)
+shape = SubResource("RectangleShape2D_eaaxj")

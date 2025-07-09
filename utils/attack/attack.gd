@@ -4,7 +4,8 @@ extends Area2D
 enum DAMAGE_TYPE {
 	NONE,
 	FIRE,
-	LIGHTNING
+	LIGHTNING,
+	SHARP_THINGY
 }
 
 @export var damage: float = 50

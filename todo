@@ -37,6 +37,7 @@ work to do:
     * lightning
 * detriments
     * take more damage
+    * vacuum
     * make enemies bigger
     * make enemies lower health
     * move slower
@@ -66,14 +67,3 @@ DONE
     * dash
 * detriments
 
-
-
-fire
-    hits 5 times
-
-lightning 
-    hits once
-
-sharp things
-    hits every time a sharp thing collides
-    only once per collision

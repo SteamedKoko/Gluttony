@@ -10,7 +10,6 @@ signal health_delpleted()
 
 func take_health(amount_to_decrease: float):
 	health = maxf(0, health - amount_to_decrease)
-	print(health)
 	if health == 0:
 		health_delpleted.emit()
 

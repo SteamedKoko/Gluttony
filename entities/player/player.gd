@@ -41,7 +41,6 @@ func level_up():
 	while current_exp >= next_level_experience:
 		current_level+=1
 		next_level_experience += pow(current_level, exp_scaling) + exp_per_level
-		print('current level ', current_level, ',current exp ', current_exp, ', next level ', next_level_experience)
 		leveled_up.emit()
 		health.take_max_health(max_health_lost_per_level)
 	
@@ -51,13 +50,10 @@ func get_dash():
 	if player_state == state.CHILLIN and dash_pressed and dash_cooldown_timer.is_stopped():
 		player_state = state.DASH
 		var direction = Input.get_vector("left", "right", "up", "down").normalized()
-		print(player_state)
-		print('dash')
 		velocity = direction * dash_velocity
 		dash_cooldown_timer.start()
 		await get_tree().create_timer(dash_timer_seconds).timeout
 		player_state = state.CHILLIN
-		print(player_state)
 
 func get_movement():
 	if player_state == state.CHILLIN:
@@ -83,7 +79,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_health_health_delpleted() -> void:
-	print('you ded')
+	pass
 	# queue_free()
 
 
