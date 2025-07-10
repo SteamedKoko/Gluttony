@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dc468wyvg3gtb"]
 
 [node name="BaseMonster" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 0
 collision_mask = 0

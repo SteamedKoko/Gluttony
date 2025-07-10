@@ -1,7 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bkggvbuvpu275"]
 
-[ext_resource type="Script" uid="uid://yl8d3y4n64eg" path="res://entities/skills/base_skill.gd" id="1_21scr"]
+[ext_resource type="Script" uid="uid://bclmmp3h6fi8n" path="res://entities/skills/sharp_thingies/sharp_thingies.gd" id="1_21scr"]
 
 [node name="SharpThingies" type="Node2D"]
 script = ExtResource("1_21scr")
-metadata/_custom_type_script = "uid://yl8d3y4n64eg"

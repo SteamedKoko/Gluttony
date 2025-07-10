@@ -11,26 +11,23 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8t66q"]
 
 [node name="ConsumableMonster" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_8t66q")
 metadata/_custom_type_script = "uid://chbsh6fscghxc"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_qfm1j")
 debug_color = Color(0.972363, 0, 0.441565, 0.42)
 
 [node name="SoftCollision" parent="." instance=ExtResource("2_fphre")]
-visible = false
 scale = Vector2(1.425, 1.425)
 
 [node name="Attack" parent="." instance=ExtResource("3_8t66q")]
-visible = false
 collision_mask = 8
 damage = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
-visible = false
 shape = SubResource("RectangleShape2D_8t66q")
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("4_34hvv")]
@@ -44,4 +41,5 @@ shape = SubResource("RectangleShape2D_8t66q")
 [node name="Health" parent="." instance=ExtResource("5_fcyur")]
 max_health = 50.0
 
+[connection signal="dealt_damage" from="Attack" to="." method="_on_attack_dealt_damage"]
 [connection signal="health_delpleted" from="Health" to="." method="_on_health_health_delpleted"]

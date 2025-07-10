@@ -6,6 +6,8 @@
 size = Vector2(24.7393, 20)
 
 [node name="SharpThingy" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_ucefh")
 metadata/_custom_type_script = "uid://1ab276wrgw0r"
 

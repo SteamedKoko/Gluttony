@@ -12,6 +12,8 @@ enum DAMAGE_TYPE {
 @export var damage_cooldown: float = 0
 @export var damage_type: DAMAGE_TYPE
 
+signal dealt_damage()
+
 func _physics_process(_delta: float) -> void:
 	var overlap = get_overlapping_areas()
 	for ob in overlap:
@@ -20,3 +22,5 @@ func _physics_process(_delta: float) -> void:
 				ob.receive_damage(damage)
 			else:
 				ob.receive_continuous_damage(damage, damage_cooldown, str(damage_type))
+
+			dealt_damage.emit()

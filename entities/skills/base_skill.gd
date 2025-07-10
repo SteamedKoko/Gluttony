@@ -28,7 +28,6 @@ func _ready() -> void:
 func _on_execute_timeout() -> void:
 	animated_sprite.play()
 	animated_sprite.visible = true
-	pass
 
 
 func _on_animated_sprite_changed() -> void:

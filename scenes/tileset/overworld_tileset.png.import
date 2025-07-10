@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bedc6dmhufpr5"
-path="res://.godot/imported/A+_bft.png-43d267d8a81877f1141610c4d2d8917e.ctex"
+uid="uid://dt7fp304vxyxv"
+path="res://.godot/imported/overworld_tileset.png-1e6f6aaa64019d2e036b9416306963a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/arena/A+_bft.png"
-dest_files=["res://.godot/imported/A+_bft.png-43d267d8a81877f1141610c4d2d8917e.ctex"]
+source_file="res://scenes/tileset/overworld_tileset.png"
+dest_files=["res://.godot/imported/overworld_tileset.png-1e6f6aaa64019d2e036b9416306963a9.ctex"]
 
 [params]
 
