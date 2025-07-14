@@ -30,6 +30,11 @@ work to do:
 * level up
     * choose from a randomized skill, paired with a randomized detriment
     * subtract from max hp
+* ui
+    * health bar
+    * damage numbers
+    * level up choices
+    * exp bar
 * skills
     * damaging aura
     * rotating sharp thingies > fork? knife? spork?

@@ -4,6 +4,7 @@ extends Node2D
 @export var time_to_cast: float = 0
 @export var frame_to_enable_collider: int = 0
 @export var frame_to_end_collider: int = 0
+@export var damage: int = 0
 
 var animated_sprite: AnimatedSprite2D
 var execute_timer: Timer
@@ -22,6 +23,7 @@ func _ready() -> void:
 	animated_sprite.animation_finished.connect(_on_animated_sprite_finished)
 
 	attack = $Attack
+	attack.damage = damage
 	attack.monitoring = false
 
 

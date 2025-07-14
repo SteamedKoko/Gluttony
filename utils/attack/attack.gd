@@ -8,19 +8,35 @@ enum DAMAGE_TYPE {
 	SHARP_THINGY
 }
 
-@export var damage: float = 50
+@export var damage: float = 0
 @export var damage_cooldown: float = 0
 @export var damage_type: DAMAGE_TYPE
+@export var angle_offset: float = 0
 
 signal dealt_damage()
 
-func _physics_process(_delta: float) -> void:
+func check_and_apply_damage():
+	if not monitoring:
+		return
+
 	var overlap = get_overlapping_areas()
 	for ob in overlap:
 		if(ob is HurtBox):
+			var did_damage = false
 			if damage_cooldown == 0:
-				ob.receive_damage(damage)
+				did_damage = ob.receive_damage(damage)
 			else:
-				ob.receive_continuous_damage(damage, damage_cooldown, str(damage_type))
+				did_damage = ob.receive_continuous_damage(damage, damage_cooldown, str(damage_type))
 
-			dealt_damage.emit()
+			if did_damage:
+				dealt_damage.emit()
+
+
+
+func _physics_process(_delta: float) -> void:
+	check_and_apply_damage()
+
+
+func _on_area_entered(area:Area2D) -> void:
+	print('area entered')
+

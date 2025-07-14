@@ -83,5 +83,3 @@ func _on_health_health_delpleted() -> void:
 	# queue_free()
 
 
-func _on_hurt_box_took_damage() -> void:
-	pass

@@ -1,4 +1,3 @@
-class_name GlobalSpriteAssets
 extends Node
 
 const MONSTER_SCENE: PackedScene = preload("res://entities/monsters/BaseMonster.tscn")
@@ -77,5 +76,3 @@ enum MonsterSprites {
 	SPRING_ONION,
 	TEACUP
 }
-
-

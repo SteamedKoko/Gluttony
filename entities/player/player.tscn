@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cetseqdkeuyvr"]
+[gd_scene load_steps=8 format=3 uid="uid://cetseqdkeuyvr"]
 
 [ext_resource type="Script" uid="uid://dbmggphqcyl8" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://buj8jnnj66ub8" path="res://entities/player/sprites/v1_4frame3.png" id="1_symyc"]
 [ext_resource type="PackedScene" uid="uid://cy0ic1sihaot4" path="res://utils/hurt_box/hurt_box.tscn" id="3_sglur"]
 [ext_resource type="PackedScene" uid="uid://dtqtnwsjxg55d" path="res://utils/health/health.tscn" id="4_bls4j"]
+[ext_resource type="PackedScene" uid="uid://diacs8ggepls7" path="res://entities/damage_display/damage_display.tscn" id="5_fkugw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
 size = Vector2(38, 21)
@@ -29,6 +30,12 @@ position = Vector2(2, -2.5)
 shape = SubResource("RectangleShape2D_abrql")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 3232
+limit_bottom = 3232
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
@@ -36,7 +43,6 @@ drag_vertical_enabled = true
 z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -10)
-collision_layer = 8
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -54,5 +60,7 @@ scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_sglur")
 offset = Vector2(0, -60)
 
-[connection signal="took_damage" from="HurtBox" to="." method="_on_hurt_box_took_damage"]
+[node name="DamageDisplay" parent="." instance=ExtResource("5_fkugw")]
+position = Vector2(0, -48.42)
+
 [connection signal="health_delpleted" from="Health" to="." method="_on_health_health_delpleted"]
