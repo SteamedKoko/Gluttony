@@ -23,6 +23,7 @@ DamageNumber="*res://globals/damage_number.gd"
 [display]
 
 window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/dpi/allow_hidpi=false
 
 [input]

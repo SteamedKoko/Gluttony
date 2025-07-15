@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://mrx24doqa8im" path="res://entities/skills/sharp_thingies/sharp_thingy.gd" id="1_ucefh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eaaxj"]
-size = Vector2(24.7393, 20)
+size = Vector2(41.2322, 20)
 
 [node name="SharpThingy" type="Area2D"]
 collision_layer = 0

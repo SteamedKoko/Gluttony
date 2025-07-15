@@ -7,14 +7,19 @@ extends Area2D
 var damage_source_dictionary: Dictionary
 
 signal took_damage(dmg)
+signal got_knocked_back(knockback)
 
-func receive_damage(damage: float) -> bool:
+func receive_damage(damage: float, knockback: float) -> bool:
 	health.take_health(damage)
 	took_damage.emit(damage)
+
+	if knockback > 0:
+		got_knocked_back.emit(knockback)
+
 	return true
 
 
-func receive_continuous_damage(damage: float, dmg_cooldown: float, key: String) -> bool:
+func receive_continuous_damage(damage: float, knockback: float,dmg_cooldown: float, key: String) -> bool:
 	if damage_source_dictionary.has(key):
 		return false
 
@@ -23,6 +28,10 @@ func receive_continuous_damage(damage: float, dmg_cooldown: float, key: String) 
 	dmg_timer.timeout.connect(remove_damage_timeout.bind(key))
 	health.take_health(damage)
 	took_damage.emit(damage)
+
+	if knockback > 0:
+		got_knocked_back.emit(knockback)
+
 	return true
 
 

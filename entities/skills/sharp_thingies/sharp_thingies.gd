@@ -5,6 +5,7 @@ extends Node2D
 @export var radius: float = 50.0
 @export var damage_multiplyer: float = 1
 @export var damage_cooldown: float = .5
+@export var knockback = 400
 
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 
@@ -43,7 +44,9 @@ func _ready() -> void:
 		thingy.damage = thingy_obj.damage * damage_multiplyer
 		thingy.rotation_speed = rotation_speed
 		thingy.radius = radius
+		thingy.knockback = knockback
 		thingy.current_angle = deg_to_rad(120*thingies.size())
 		thingy.damage_cooldown = damage_cooldown
 		thingies.append(thingy)
 		self.add_child(thingy)
+

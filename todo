@@ -19,10 +19,9 @@ game mechanics:
 Gluttony
 
 work to do:
-* player
-    * attributes - hp, speed, damage
+* player:
+    * needs a skill maanger, probably a component to stuff all skills into
 * monsters:
-    * knockback
 * spawning patterns:
     * rate of spawning
     * number of monsters spawning
@@ -30,17 +29,13 @@ work to do:
 * level up
     * choose from a randomized skill, paired with a randomized detriment
     * subtract from max hp
+    * level up choices
 * ui
     * health bar
-    * damage numbers
-    * level up choices
     * exp bar
 * skills
     * damaging aura
-    * rotating sharp thingies > fork? knife? spork?
-    * shoot fire in a direction
-    * shoot death pellets
-    * lightning
+    * shoot death pellets - salt n pepper gun
 * detriments
     * take more damage
     * vacuum
@@ -67,9 +62,15 @@ DONE
     * movement towards player
     * spawning
     * attributes: hp, dmg, movespeed
+    * knockback
 * spawning patterns:
+* ui
+    * damage numbers
 * level up
 * skills
+    * rotating sharp thingies > fork? knife? spork?
+    * shoot fire in a direction
+    * lightning
     * dash
 * detriments
 
