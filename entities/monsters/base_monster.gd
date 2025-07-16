@@ -7,8 +7,8 @@ extends CharacterBody2D
 @export var push_strength = 800
 @export var move_speed: float = 100
 @export var acceleration: float = 300
-@export var knockback: float = 400
 
+var move_speed_mult = 4
 var _exp_value: float = 10
 
 func _physics_process(_delta: float) -> void:
@@ -23,8 +23,8 @@ func move_monster(delta) -> void:
 	if soft_collision.is_colliding():
 		velocity += soft_collision.get_push_vector() * delta * push_strength
 
-	# velocity.x = clamp(velocity.x, -move_speed, move_speed)
-	# velocity.y = clamp(velocity.y, -move_speed, move_speed)
+	velocity.x = clamp(velocity.x, -move_speed * move_speed_mult, move_speed * move_speed_mult)
+	velocity.y = clamp(velocity.y, -move_speed * move_speed_mult, move_speed * move_speed_mult)
 	move_and_slide()
 
 

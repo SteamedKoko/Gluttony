@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://c66r3xjthspcv"]
 
-[ext_resource type="Script" uid="uid://yl8d3y4n64eg" path="res://entities/skills/base_skill.gd" id="1_vm21n"]
+[ext_resource type="Script" uid="uid://b8rr4idkpjqxi" path="res://entities/skills/fire/fire.gd" id="1_uljsr"]
 [ext_resource type="Texture2D" uid="uid://c6owp5podsk4s" path="res://entities/skills/sprites/flame.webp" id="2_d3yk2"]
 [ext_resource type="Script" uid="uid://1ab276wrgw0r" path="res://utils/attack/attack.gd" id="3_vb2om"]
 
@@ -152,19 +152,22 @@ animations = [{
 size = Vector2(63, 20)
 
 [node name="Fire" type="Node2D"]
-scale = Vector2(-2, 1)
-script = ExtResource("1_vm21n")
+z_index = 1
+script = ExtResource("1_uljsr")
 time_to_cast = 1.0
 frame_to_enable_collider = 4
 frame_to_end_collider = 16
+knockback = 10.0
 metadata/_custom_type_script = "uid://yl8d3y4n64eg"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 0)
 sprite_frames = SubResource("SpriteFrames_nankg")
 frame = 23
 frame_progress = 1.0
 
 [node name="Attack" type="Area2D" parent="."]
+position = Vector2(32, 0)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("3_vb2om")

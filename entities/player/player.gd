@@ -9,13 +9,9 @@ extends CharacterBody2D
 @export var exp_per_level: float = 10
 @export var exp_scaling: float = 3
 
-@export var dash_timer_seconds: float = .2
-@export var dash_velocity: float = 800
-@export var dash_cooldown_seconds: float = 10
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health: Health = $Health
-@onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 
 enum state {
 	DASH,
@@ -37,6 +33,12 @@ var next_level_experience: float = 10
 
 var is_facing_left: bool = true
 
+func _ready():
+	GlobalSkillManager.add_skill(GlobalSkillManager.skills.SHARP_THINGIES)
+	GlobalSkillManager.add_skill(GlobalSkillManager.skills.FIRE)
+	GlobalSkillManager.add_skill(GlobalSkillManager.skills.LIGHTNING)
+	GlobalSkillManager.add_skill(GlobalSkillManager.skills.DASH)
+
 func level_up():
 	while current_exp >= next_level_experience:
 		current_level+=1
@@ -45,15 +47,6 @@ func level_up():
 		health.take_max_health(max_health_lost_per_level)
 	
 
-func get_dash():
-	var dash_pressed = Input.is_action_pressed("dash")
-	if player_state == state.CHILLIN and dash_pressed and dash_cooldown_timer.is_stopped():
-		player_state = state.DASH
-		var direction = Input.get_vector("left", "right", "up", "down").normalized()
-		velocity = direction * dash_velocity
-		dash_cooldown_timer.start()
-		await get_tree().create_timer(dash_timer_seconds).timeout
-		player_state = state.CHILLIN
 
 func get_movement():
 	if player_state == state.CHILLIN:
@@ -73,7 +66,6 @@ func add_exp(exp_to_add: float):
 	current_exp += exp_to_add
 
 func _physics_process(_delta: float) -> void:
-	get_dash()
 	get_movement()
 	move_and_slide()
 

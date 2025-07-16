@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bm36y6s1i2gu4"]
 
-[ext_resource type="Script" uid="uid://yl8d3y4n64eg" path="res://entities/skills/base_skill.gd" id="1_pyttu"]
+[ext_resource type="Script" uid="uid://pta31wptyk7s" path="res://entities/skills/lightning/lightning.gd" id="1_5jdx2"]
 [ext_resource type="Texture2D" uid="uid://b5haco536oqnd" path="res://entities/skills/sprites/lightning.png" id="2_rljlk"]
 [ext_resource type="PackedScene" uid="uid://cd07nhfaef5cy" path="res://utils/attack/attack.tscn" id="2_vj8le"]
 
@@ -72,8 +72,8 @@ animations = [{
 }]
 
 [node name="Lightning" type="Node2D"]
-script = ExtResource("1_pyttu")
-time_to_cast = 5.0
+script = ExtResource("1_5jdx2")
+time_to_cast = 1.0
 frame_to_enable_collider = 4
 metadata/_custom_type_script = "uid://yl8d3y4n64eg"
 

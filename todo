@@ -19,6 +19,8 @@ game mechanics:
 Gluttony
 
 work to do:
+* general:
+    * shadows
 * player:
     * needs a skill maanger, probably a component to stuff all skills into
 * monsters:
@@ -27,8 +29,7 @@ work to do:
     * number of monsters spawning
     * type spawning
 * level up
-    * choose from a randomized skill, paired with a randomized detriment
-    * subtract from max hp
+    * choose from a randomized skill, paired with a randomized detriment (ui) subtract from max hp
     * level up choices
 * ui
     * health bar
