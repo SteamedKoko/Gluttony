@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg63xbboysn8b"]
+
+[ext_resource type="Texture2D" uid="uid://cjqiwu5vinc60" path="res://ui/level_up_menu/sprites/sign.png" id="1_s11mn"]
+
+[node name="MarginContainer" type="MarginContainer"]
+custom_minimum_size = Vector2(200, 350)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_s11mn")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
