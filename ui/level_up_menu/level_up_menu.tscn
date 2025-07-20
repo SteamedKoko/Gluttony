@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://co6ketbnvk6rd"]
+
+[ext_resource type="Texture2D" uid="uid://cjqiwu5vinc60" path="res://ui/level_up_menu/sprites/sign.png" id="1_1parf"]
+
+[node name="LevelUpMenu" type="Node2D"]
+scale = Vector2(inf_neg, 1.74359)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/HSplitContainer"]
+layout_mode = 2
+texture = ExtResource("1_1parf")
+region_rect = Rect2(1, 1, 1, 1)

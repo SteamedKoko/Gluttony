@@ -34,10 +34,7 @@ var next_level_experience: float = 10
 var is_facing_left: bool = true
 
 func _ready():
-	GlobalSkillManager.add_skill(GlobalSkillManager.skills.SHARP_THINGIES)
-	GlobalSkillManager.add_skill(GlobalSkillManager.skills.FIRE)
-	GlobalSkillManager.add_skill(GlobalSkillManager.skills.LIGHTNING)
-	GlobalSkillManager.add_skill(GlobalSkillManager.skills.DASH)
+	pass
 
 func level_up():
 	while current_exp >= next_level_experience:
