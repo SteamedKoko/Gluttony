@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://gwslf667jj30"]
+[gd_scene load_steps=5 format=4 uid="uid://gwslf667jj30"]
 
 [ext_resource type="TileSet" uid="uid://cm8jf80i4ndxv" path="res://scenes/tileset/overworld.tres" id="1_asdgj"]
 [ext_resource type="PackedScene" uid="uid://cetseqdkeuyvr" path="res://entities/player/player.tscn" id="3_5tue2"]
 [ext_resource type="PackedScene" uid="uid://c2rh1w6xsy484" path="res://entities/spawner/spawner.tscn" id="3_aj7ud"]
+[ext_resource type="PackedScene" uid="uid://co6ketbnvk6rd" path="res://ui/level_up_menu/level_up_menu.tscn" id="4_aj7ud"]
 
 [node name="Arena" type="Node2D"]
 y_sort_enabled = true
@@ -50,3 +51,7 @@ position = Vector2(892, 3350)
 
 [node name="Spawner9" parent="." instance=ExtResource("3_aj7ud")]
 position = Vector2(1459, 1595)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelUpMenu" parent="CanvasLayer" instance=ExtResource("4_aj7ud")]

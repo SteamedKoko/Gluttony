@@ -70,5 +70,3 @@ func _physics_process(_delta: float) -> void:
 func _on_health_health_delpleted() -> void:
 	pass
 	# queue_free()
-
-
