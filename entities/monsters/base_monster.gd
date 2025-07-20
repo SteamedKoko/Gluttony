@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var acceleration: float = 300
 
 var move_speed_mult = 4
-var _exp_value: float = 10000
+var _exp_value: float = 100
 
 func _physics_process(_delta: float) -> void:
 	move_monster(_delta)

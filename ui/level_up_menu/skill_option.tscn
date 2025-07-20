@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg63xbboysn8b"]
+[gd_scene load_steps=3 format=3 uid="uid://dg63xbboysn8b"]
 
 [ext_resource type="Texture2D" uid="uid://cjqiwu5vinc60" path="res://ui/level_up_menu/sprites/sign.png" id="1_s11mn"]
+[ext_resource type="Script" uid="uid://c8nwplhw2xlgw" path="res://ui/level_up_menu/skill_option.gd" id="1_stj82"]
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="SkillOption" type="MarginContainer"]
 custom_minimum_size = Vector2(200, 350)
+script = ExtResource("1_stj82")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
@@ -12,3 +14,21 @@ patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="NinePatchRect/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2

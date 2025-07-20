@@ -25,6 +25,7 @@ color = Color(0.240447, 0.149788, 0.0151228, 0.223529)
 
 [node name="SkillOptionContainer" type="HBoxContainer" parent="BaseMenu/ColorRect"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

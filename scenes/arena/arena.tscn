@@ -52,6 +52,15 @@ position = Vector2(892, 3350)
 [node name="Spawner9" parent="." instance=ExtResource("3_aj7ud")]
 position = Vector2(1459, 1595)
 
+[node name="Spawner10" parent="." instance=ExtResource("3_aj7ud")]
+position = Vector2(1711, 1710)
+
+[node name="Spawner11" parent="." instance=ExtResource("3_aj7ud")]
+position = Vector2(1730, 1595)
+
+[node name="Spawner12" parent="." instance=ExtResource("3_aj7ud")]
+position = Vector2(1489, 1715)
+
 [node name="Popup" type="CanvasLayer" parent="."]
 
 [node name="LevelUpMenu" parent="Popup" instance=ExtResource("4_aj7ud")]
