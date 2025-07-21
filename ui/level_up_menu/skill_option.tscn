@@ -29,6 +29,109 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="NinePatchRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
+custom_minimum_size = Vector2(100, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SkillIconContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="ColorRect2" type="ColorRect" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.619608, 0.509804, 0.396078, 1)
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer/ColorRect2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.470588, 0.317647, 0.156863, 0.717647)
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer/ColorRect2/ColorRect"]
+clip_contents = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer/ColorRect2/ColorRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SkillSprite" type="Sprite2D" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer/ColorRect2/ColorRect/MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+scale = Vector2(1.5, 1.5)
+
+[node name="SkillIconContainer2" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="ColorRect2" type="ColorRect" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer2"]
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.619608, 0.509804, 0.396078, 1)
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer2/ColorRect2"]
+custom_minimum_size = Vector2(148, 198)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.470588, 0.317647, 0.156863, 0.533333)
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer2/ColorRect2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="SkillDescription" type="RichTextLabel" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer2/ColorRect2/ColorRect/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="AcceptSkillContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TakeSkillButton" type="Button" parent="NinePatchRect/MarginContainer/VBoxContainer/AcceptSkillContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Take"
