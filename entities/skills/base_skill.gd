@@ -12,6 +12,14 @@ var animated_sprite: AnimatedSprite2D
 var execute_timer: Timer
 var attack: Attack
 
+var level: int = 1 :
+	set(value):
+		if(attack):
+			attack.damage = damage * (level * damage_multiplyer)
+		level = value
+
+var damage_multiplyer: float = 1
+
 func _ready() -> void:
 	execute_timer = Timer.new()
 	execute_timer.timeout.connect(_on_execute_timeout)

@@ -68,7 +68,8 @@ func get_random_skills(numberToGrab: int) -> Array:
 func add_skill(skill_enum: skills) -> void:
 	var skill = active_skills.get(skill_enum)
 	if skill:
-		return #levelup
+		skill.level += 1
+		return
 	var new_skill = ALL_SKILLS.get(skill_enum).scene.instantiate()
 	active_skills[skill_enum] = new_skill
 	add_child(new_skill)

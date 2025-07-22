@@ -157,6 +157,8 @@ script = ExtResource("1_uljsr")
 time_to_cast = 1.0
 frame_to_enable_collider = 4
 frame_to_end_collider = 16
+damage = 10
+damage_cooldown = 0.05
 knockback = 10.0
 metadata/_custom_type_script = "uid://yl8d3y4n64eg"
 
