@@ -24,7 +24,7 @@ func finish_skill_choice(skill: GlobalSkillManager.skills) -> void:
 		child.call_deferred('queue_free')
 
 	levels_left = max(0, levels_left-1)
-	GlobalSkillManager.add_skill(skill)
+	GlobalSkillManager.alter_skills(skill)
 
 	if levels_left > 0:
 		opt_for_skill()
@@ -44,4 +44,3 @@ func populate_random_skills():
 func _process(_delta: float) -> void:
 	if levels_left > 0:
 		opt_for_skill()
-

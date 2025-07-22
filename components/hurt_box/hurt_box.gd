@@ -9,7 +9,7 @@ var damage_source_dictionary: Dictionary
 signal took_damage(dmg)
 signal got_knocked_back(knockback)
 
-func receive_damage(damage: float, knockback: float) -> bool:
+func try_receive_damage(damage: float, knockback: float) -> bool:
 	health.take_health(damage)
 	took_damage.emit(damage)
 
@@ -19,7 +19,7 @@ func receive_damage(damage: float, knockback: float) -> bool:
 	return true
 
 
-func receive_continuous_damage(damage: float, knockback: float,dmg_cooldown: float, key: String) -> bool:
+func try_receive_continuous_damage(damage: float, knockback: float, dmg_cooldown: float, key: String) -> bool:
 	if damage_source_dictionary.has(key):
 		return false
 
@@ -38,9 +38,3 @@ func receive_continuous_damage(damage: float, knockback: float,dmg_cooldown: flo
 func remove_damage_timeout(key: String):
 	damage_source_dictionary.erase(key)
 
-
-# func iframes():
-# 	if monitoring:
-# 		monitoring = false
-# 		await get_tree().create_timer(invulerability_time_seconds).timeout
-# 		monitoring = true

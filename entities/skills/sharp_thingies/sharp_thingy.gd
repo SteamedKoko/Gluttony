@@ -3,6 +3,8 @@ extends Attack
 
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 
+var base_damage: int = 0
+
 var rotation_speed = 90.0 
 var sprite_resource: Resource 
 var current_angle = 0.0
@@ -11,7 +13,6 @@ var radius = 50.0
 func _ready() -> void:
 	var sprite: Sprite2D = $Sprite2D
 	sprite.texture = sprite_resource
-	damage_type = DAMAGE_TYPE.SHARP_THINGY
 
 func _physics_process(delta: float) -> void:
 	current_angle += deg_to_rad(rotation_speed) * delta

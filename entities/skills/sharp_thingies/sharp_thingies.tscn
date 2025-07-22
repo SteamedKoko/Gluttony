@@ -4,3 +4,5 @@
 
 [node name="SharpThingies" type="Node2D"]
 script = ExtResource("1_21scr")
+damage_multiplyer = 1.2
+knockback_multiplyer = 1.1

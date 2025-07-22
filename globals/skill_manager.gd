@@ -59,17 +59,24 @@ func get_skill(skill_enum: skills) -> Dictionary:
 
 
 func get_random_skills(numberToGrab: int) -> Array:
-	var randomized_array: Array = skills.keys()
-	print(randomized_array)
-	randomized_array.shuffle()
-	return randomized_array.slice(0, numberToGrab)
+	var to_shuffle = []
+	for s in skills:
+		var skill= active_skills.get(skills.get(s))
+		if skill and skill.can_level:
+			to_shuffle.append(s)
+		elif not skill:
+			to_shuffle.append(s)
+
+	to_shuffle.shuffle()
+	return to_shuffle.slice(0, min(numberToGrab, to_shuffle.size()))
 
 
-func add_skill(skill_enum: skills) -> void:
-	var skill = active_skills.get(skill_enum)
+func alter_skills(skill_enum: skills) -> void:
+	var skill: BaseSkill = active_skills.get(skill_enum)
 	if skill:
-		skill.level += 1
+		skill.level_up()
 		return
+
 	var new_skill = ALL_SKILLS.get(skill_enum).scene.instantiate()
 	active_skills[skill_enum] = new_skill
 	add_child(new_skill)

@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://bq0pxhpgrk6oq"]
 
 [ext_resource type="Script" uid="uid://c2eys7m02t08e" path="res://entities/monsters/consumable_monster.gd" id="1_8t66q"]
-[ext_resource type="PackedScene" uid="uid://cmiuc2trhsyq7" path="res://utils/soft_collision/soft_collision.tscn" id="2_fphre"]
-[ext_resource type="PackedScene" uid="uid://cd07nhfaef5cy" path="res://utils/attack/attack.tscn" id="3_8t66q"]
-[ext_resource type="PackedScene" uid="uid://cy0ic1sihaot4" path="res://utils/hurt_box/hurt_box.tscn" id="4_34hvv"]
-[ext_resource type="PackedScene" uid="uid://dtqtnwsjxg55d" path="res://utils/health/health.tscn" id="5_fcyur"]
+[ext_resource type="PackedScene" uid="uid://cmiuc2trhsyq7" path="res://components/soft_collision/soft_collision.tscn" id="2_fphre"]
+[ext_resource type="PackedScene" uid="uid://cd07nhfaef5cy" path="res://components/attack/attack.tscn" id="3_8t66q"]
+[ext_resource type="PackedScene" uid="uid://cy0ic1sihaot4" path="res://components/hurt_box/hurt_box.tscn" id="4_34hvv"]
+[ext_resource type="PackedScene" uid="uid://dtqtnwsjxg55d" path="res://components/health/health.tscn" id="5_fcyur"]
 [ext_resource type="PackedScene" uid="uid://diacs8ggepls7" path="res://entities/damage_display/damage_display.tscn" id="6_te0qj"]
 [ext_resource type="PackedScene" uid="uid://dk01m2ccduj5w" path="res://entities/knockback/knockback.tscn" id="7_2mdf2"]
 

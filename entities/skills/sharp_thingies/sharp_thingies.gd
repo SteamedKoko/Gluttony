@@ -1,9 +1,8 @@
 class_name SharpThingies
-extends Node2D
+extends BaseSkill
 
 @export var rotation_speed: float = 180.0 
 @export var radius: float = 50.0
-@export var damage_multiplyer: float = 1
 @export var damage_cooldown: float = .5
 @export var knockback = 400
 
@@ -33,20 +32,36 @@ enum SharpThingyOptions {
 	FORK,
 	SPORK
 }
-
+const DEGREES_TO_POSITION_THINGIES: int = 360
 
 func _ready() -> void:
-	#this hacky as hell boi, we will want a way to add new ones in and recalculate angle around origin for all
-	for key in SHARP_THINGY_RESOURCES.keys():
-		var thingy_obj = SHARP_THINGY_RESOURCES.get(key)
-		var thingy: SharpThingy = sharp_thingy_scene.instantiate()
-		thingy.sprite_resource = thingy_obj.resource
-		thingy.damage = thingy_obj.damage * damage_multiplyer
+	add_random_sharp_thing()
+
+func add_random_sharp_thing() -> void:
+	var random_thingy = SHARP_THINGY_RESOURCES.keys().pick_random()
+	return add_sharp_thingy(random_thingy)
+
+func add_sharp_thingy(key: SharpThingyOptions) -> void:
+	var thingy_obj = SHARP_THINGY_RESOURCES.get(key)
+	var thingy: SharpThingy = sharp_thingy_scene.instantiate()
+	thingy.sprite_resource = thingy_obj.resource
+	thingy.base_damage = thingy_obj.damage
+	thingies.append(thingy)
+	add_child(thingy)
+
+func rework_thingies() -> void:
+	for i in range(thingies.size()):
+		var thingy: SharpThingy = thingies[i]
+		thingy.damage = thingy.base_damage * damage_multiplyer
 		thingy.rotation_speed = rotation_speed
 		thingy.radius = radius
 		thingy.knockback = knockback
-		thingy.current_angle = deg_to_rad(120*thingies.size())
-		thingy.damage_cooldown = damage_cooldown
-		thingies.append(thingy)
-		self.add_child(thingy)
+		# thingy.damage_cooldown = damage_cooldown
 
+		#need to get rotation of current thingy
+		thingy.current_angle = deg_to_rad((DEGREES_TO_POSITION_THINGIES / thingies.size()) * i)
+
+
+func level_up_action() -> void:
+	add_random_sharp_thing()
+	rework_thingies()

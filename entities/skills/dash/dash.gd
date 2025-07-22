@@ -1,4 +1,5 @@
-extends Node2D
+class_name Dash
+extends BaseSkill
 
 @export var dash_timer_seconds: float = .2
 @export var dash_velocity: float = 800
@@ -7,6 +8,9 @@ extends Node2D
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 
 var player: Player = GameManager.player
+
+func _ready() -> void:
+	can_level = false
 
 func get_dash():
 	var dash_pressed = Input.is_action_pressed("dash")

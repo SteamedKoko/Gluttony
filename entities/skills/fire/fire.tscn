@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b8rr4idkpjqxi" path="res://entities/skills/fire/fire.gd" id="1_uljsr"]
 [ext_resource type="Texture2D" uid="uid://c6owp5podsk4s" path="res://entities/skills/sprites/flame.webp" id="2_d3yk2"]
-[ext_resource type="Script" uid="uid://1ab276wrgw0r" path="res://utils/attack/attack.gd" id="3_vb2om"]
+[ext_resource type="PackedScene" uid="uid://dt6fng5typ03j" path="res://components/attack/animated_attack.tscn" id="4_gkobn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vb2om"]
 atlas = ExtResource("2_d3yk2")
@@ -153,13 +153,11 @@ size = Vector2(63, 20)
 
 [node name="Fire" type="Node2D"]
 z_index = 1
+scale = Vector2(-1, 1)
 script = ExtResource("1_uljsr")
-time_to_cast = 1.0
-frame_to_enable_collider = 4
-frame_to_end_collider = 16
-damage = 10
-damage_cooldown = 0.05
-knockback = 10.0
+damage_multiplyer = 1.8
+knockback_multiplyer = 1.1
+size_multiplyer = Vector2(1.5, 1.5)
 metadata/_custom_type_script = "uid://yl8d3y4n64eg"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -168,15 +166,17 @@ sprite_frames = SubResource("SpriteFrames_nankg")
 frame = 23
 frame_progress = 1.0
 
-[node name="Attack" type="Area2D" parent="."]
+[node name="AnimatedAttack" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("4_gkobn")]
 position = Vector2(32, 0)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("3_vb2om")
+animated_sprite = NodePath("../AnimatedSprite2D")
+damage = 10
 damage_cooldown = 0.3
-damage_type = 1
-metadata/_custom_type_script = "uid://1ab276wrgw0r"
+knockback = 50.0
+frame_to_enable_collider = 4
+frame_to_end_collider = 18
+time_to_cast = 1.0
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Attack"]
-position = Vector2(-0.5, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedAttack"]
 shape = SubResource("RectangleShape2D_vb2om")

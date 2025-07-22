@@ -40,7 +40,6 @@ func level_up():
 	while current_exp >= next_level_experience:
 		current_level+=1
 		next_level_experience += pow(current_level, exp_scaling) + exp_per_level
-		print('sent signal')
 		leveled_up.emit()
 		health.take_max_health(max_health_lost_per_level)
 	
