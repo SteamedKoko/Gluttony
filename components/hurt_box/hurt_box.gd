@@ -11,7 +11,7 @@ signal got_knocked_back(knockback)
 
 var is_invul: bool = false
 
-func try_receive_damage(damage: float, knockback: float) -> bool:
+func try_receive_damage(damage: int, knockback: float) -> bool:
 	if is_invul:
 		return false
 
@@ -24,7 +24,7 @@ func try_receive_damage(damage: float, knockback: float) -> bool:
 	return true
 
 
-func try_receive_continuous_damage(damage: float, knockback: float, dmg_cooldown: float, key: String) -> bool:
+func try_receive_continuous_damage(damage: int, knockback: float, dmg_cooldown: float, key: String) -> bool:
 	if is_invul:
 		return false
 

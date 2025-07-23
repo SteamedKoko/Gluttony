@@ -4,6 +4,8 @@ extends Area2D
 @export var damage: float = 0
 @export var knockback = 0
 
+var damage_cooldown: float = 0
+
 signal dealt_damage()
 
 func check_and_apply_damage():
@@ -13,7 +15,11 @@ func check_and_apply_damage():
 	var overlap = get_overlapping_areas()
 	for ob in overlap:
 		if(ob is HurtBox):
-			if ob.try_receive_damage(damage, knockback):
+			if damage_cooldown > 0:
+				if ob.try_receive_continuous_damage(damage, knockback, damage_cooldown, name):
+					dealt_damage.emit()
+				
+			elif ob.try_receive_damage(damage, knockback):
 				dealt_damage.emit()
 
 
