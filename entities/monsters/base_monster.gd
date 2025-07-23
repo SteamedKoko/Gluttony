@@ -1,15 +1,20 @@
 class_name BaseMonster
 extends CharacterBody2D
 
-@onready var player = get_tree().get_first_node_in_group("player")
-@onready var soft_collision = $SoftCollision
 
 @export var push_strength = 800
 @export var move_speed: float = 100
 @export var acceleration: float = 300
 
+@onready var player = get_tree().get_first_node_in_group("player")
+@onready var soft_collision = $SoftCollision
+@onready var health: Health = $Health
+
 var move_speed_mult = 4
 var _exp_value: float = 10
+
+func _ready() -> void:
+	health.health_depleted.connect(perish)
 
 func _physics_process(_delta: float) -> void:
 	move_monster(_delta)

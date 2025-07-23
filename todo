@@ -16,6 +16,9 @@ game mechanics:
     * Finishing will require finding the exit
 
 
+today:
+* exp bar
+
 Gluttony
 
 work to do:
@@ -32,8 +35,6 @@ work to do:
     * choose from a randomized skill, paired with a randomized detriment (ui) subtract from max hp
     * level up choices
 * ui
-    * health bar
-    * exp bar
 * skills
     * damaging aura
     * shoot death pellets - salt n pepper gun
@@ -46,7 +47,6 @@ work to do:
     * enemies shoot death pellets
     * make enemies faster
     * more monsters spawn
-
 
 
 DONE
@@ -66,6 +66,7 @@ DONE
     * knockback
 * spawning patterns:
 * ui
+    * health bar
     * damage numbers
 * level up
 * skills

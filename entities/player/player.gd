@@ -2,9 +2,8 @@ class_name Player
 extends CharacterBody2D
 
 @export var speed: float = 250
-@export var max_hp: float = 100
 @export var damage_modifier: float = 1
-@export var max_health_lost_per_level: float = 10
+@export var max_health_lost_per_level: int = 10
 
 @export var exp_per_level: float = 10
 @export var exp_scaling: float = 3
@@ -12,6 +11,7 @@ extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health: Health = $Health
+@onready var hurt_box: HurtBox = $HurtBox
 
 enum state {
 	DASH,
@@ -28,7 +28,7 @@ var current_exp: float:
 		if current_exp > next_level_experience:
 			level_up()
 
-var current_level: float = 0
+var current_level: int = 0
 var next_level_experience: float = 10
 
 var is_facing_left: bool = true

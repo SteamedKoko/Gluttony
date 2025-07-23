@@ -27,7 +27,7 @@ scale = Vector2(1.425, 1.425)
 
 [node name="Attack" parent="." instance=ExtResource("3_8t66q")]
 collision_mask = 8
-damage = 1.0
+damage = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
 shape = SubResource("RectangleShape2D_8t66q")
@@ -41,7 +41,7 @@ invulerability_time_seconds = 0.2
 shape = SubResource("RectangleShape2D_8t66q")
 
 [node name="Health" parent="." instance=ExtResource("5_fcyur")]
-max_health = 50.0
+max_health = 50
 
 [node name="DamageDisplay" parent="." instance=ExtResource("6_te0qj")]
 position = Vector2(0, -30)
@@ -50,4 +50,3 @@ position = Vector2(0, -30)
 
 [connection signal="dealt_damage" from="Attack" to="." method="_on_attack_dealt_damage"]
 [connection signal="got_knocked_back" from="HurtBox" to="Knockback" method="_on_hurt_box_got_knocked_back"]
-[connection signal="health_delpleted" from="Health" to="." method="_on_health_health_delpleted"]

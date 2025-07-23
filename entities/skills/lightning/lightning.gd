@@ -35,4 +35,3 @@ func level_up_action() -> void:
 	attack.damage = ceil(attack.damage * damage_multiplyer)
 	attack.knockback = ceil(attack.knockback * knockback_multiplyer)
 	scale *=  size_multiplyer
-	print(scale)

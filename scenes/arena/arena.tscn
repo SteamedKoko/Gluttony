@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://gwslf667jj30"]
+[gd_scene load_steps=7 format=4 uid="uid://gwslf667jj30"]
 
 [ext_resource type="TileSet" uid="uid://cm8jf80i4ndxv" path="res://scenes/tileset/overworld.tres" id="1_asdgj"]
 [ext_resource type="PackedScene" uid="uid://cetseqdkeuyvr" path="res://entities/player/player.tscn" id="3_5tue2"]
 [ext_resource type="PackedScene" uid="uid://c2rh1w6xsy484" path="res://entities/spawner/spawner.tscn" id="3_aj7ud"]
 [ext_resource type="PackedScene" uid="uid://co6ketbnvk6rd" path="res://ui/level_up_menu/level_up_menu.tscn" id="4_aj7ud"]
+[ext_resource type="PackedScene" uid="uid://cwvcdouwcxna2" path="res://ui/health_bar/health_bar.tscn" id="5_asdgj"]
+[ext_resource type="PackedScene" uid="uid://bxievinm2sb74" path="res://ui/level_label/level_label.tscn" id="5_jx0ua"]
 
 [node name="Arena" type="Node2D"]
 y_sort_enabled = true
@@ -62,5 +64,43 @@ position = Vector2(1730, 1595)
 position = Vector2(1489, 1715)
 
 [node name="Popup" type="CanvasLayer" parent="."]
+layer = 5
 
 [node name="LevelUpMenu" parent="Popup" instance=ExtResource("4_aj7ud")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="LevelLabel" parent="HUD/MarginContainer/HBoxContainer/MarginContainer" instance=ExtResource("5_jx0ua")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HealthBar2" parent="HUD/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("5_asdgj")]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 4

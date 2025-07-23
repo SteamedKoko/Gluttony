@@ -9,7 +9,12 @@ var damage_source_dictionary: Dictionary
 signal took_damage(dmg)
 signal got_knocked_back(knockback)
 
+var is_invul: bool = false
+
 func try_receive_damage(damage: float, knockback: float) -> bool:
+	if is_invul:
+		return false
+
 	health.take_health(damage)
 	took_damage.emit(damage)
 
@@ -20,6 +25,9 @@ func try_receive_damage(damage: float, knockback: float) -> bool:
 
 
 func try_receive_continuous_damage(damage: float, knockback: float, dmg_cooldown: float, key: String) -> bool:
+	if is_invul:
+		return false
+
 	if damage_source_dictionary.has(key):
 		return false
 

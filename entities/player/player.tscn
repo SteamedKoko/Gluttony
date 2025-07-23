@@ -51,7 +51,7 @@ position = Vector2(2, 7.5)
 shape = SubResource("RectangleShape2D_abrql")
 
 [node name="Health" parent="." instance=ExtResource("4_bls4j")]
-max_health = 100.0
+max_health = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
@@ -60,8 +60,7 @@ offset = Vector2(0, -60)
 
 [node name="DamageDisplay" parent="." instance=ExtResource("5_fkugw")]
 position = Vector2(0, -48.42)
+damage_number_color = Color(0.787735, 0.195361, 0.14193, 1)
 
 [node name="FirePosition" type="Node2D" parent="."]
 position = Vector2(-5, 4)
-
-[connection signal="health_delpleted" from="Health" to="." method="_on_health_health_delpleted"]

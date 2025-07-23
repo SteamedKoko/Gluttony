@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxievinm2sb74"]
+
+[ext_resource type="Script" uid="uid://dsixisqmmpfr7" path="res://ui/level_label/level_label.gd" id="1_125g3"]
+
+[node name="LevelLabel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_125g3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(50, 50)
+theme_override_font_sizes/normal_font_size = 30
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1

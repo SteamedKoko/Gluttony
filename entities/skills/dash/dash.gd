@@ -19,7 +19,9 @@ func get_dash():
 		var direction = Input.get_vector("left", "right", "up", "down").normalized()
 		player.velocity = direction * dash_velocity
 		dash_cooldown_timer.start()
+		player.hurt_box.is_invul = true
 		await get_tree().create_timer(dash_timer_seconds).timeout
+		player.hurt_box.is_invul = false
 		player.player_state = player.state.CHILLIN
 
 func _physics_process(_delta: float) -> void:

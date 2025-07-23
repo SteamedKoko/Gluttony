@@ -1,12 +1,11 @@
 extends Node
 
-const FONT_COLOR: Color = "#FFF"
 const OUTLINE_COLOR: Color = "#000"
 const FONT_SIZE: int = 18
 const OUTLINE_SIZE: int = 2
 
 
-func display_damage(amount: int, position: Vector2):
+func display_damage(amount: int, position: Vector2, font_color: Color):
 	var number: Label = Label.new()
 	number.text = str(amount)
 	number.z_index = 5
@@ -14,7 +13,7 @@ func display_damage(amount: int, position: Vector2):
 
 	number.label_settings = LabelSettings.new()
 
-	number.label_settings.font_color = FONT_COLOR
+	number.label_settings.font_color = font_color
 	number.label_settings.font_size = FONT_SIZE
 	number.label_settings.outline_color = OUTLINE_COLOR
 	number.label_settings.outline_size = OUTLINE_SIZE
