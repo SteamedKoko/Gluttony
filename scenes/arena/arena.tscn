@@ -69,6 +69,7 @@ layer = 5
 [node name="LevelUpMenu" parent="Popup" instance=ExtResource("4_aj7ud")]
 
 [node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD"]
 anchors_preset = 15

@@ -10,7 +10,11 @@ func _ready() -> void:
 
 func update_health_bar():
 	var new_width: float = (float(health.current_max_health) / float(health.max_health))
-	scale = Vector2(new_width, 1)
-	print("max health: %s, current max: %s, current health: %s" % [health.max_health, health.current_max_health, health.health])
-	progressBar.max_value = health.current_max_health
-	progressBar.value = health.health
+	var tween: Tween = create_tween()
+	if(new_width < scale.x):
+		tween.tween_property(self, "scale", Vector2(new_width, 1), .1)
+
+	tween.set_parallel(true)
+	tween.tween_property(progressBar, "max_value", health.current_max_health, .2)
+	tween.tween_property(progressBar, "value", health.health, .2)
+	await tween.finished
