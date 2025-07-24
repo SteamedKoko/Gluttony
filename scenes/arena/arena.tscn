@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://gwslf667jj30"]
+[gd_scene load_steps=8 format=4 uid="uid://gwslf667jj30"]
 
 [ext_resource type="TileSet" uid="uid://cm8jf80i4ndxv" path="res://scenes/tileset/overworld.tres" id="1_asdgj"]
 [ext_resource type="PackedScene" uid="uid://cetseqdkeuyvr" path="res://entities/player/player.tscn" id="3_5tue2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://co6ketbnvk6rd" path="res://ui/level_up_menu/level_up_menu.tscn" id="4_aj7ud"]
 [ext_resource type="PackedScene" uid="uid://cwvcdouwcxna2" path="res://ui/health_bar/health_bar.tscn" id="5_asdgj"]
 [ext_resource type="PackedScene" uid="uid://bxievinm2sb74" path="res://ui/level_label/level_label.tscn" id="5_jx0ua"]
+[ext_resource type="PackedScene" uid="uid://b5pj8jbpfq6hj" path="res://ui/exp_bar/exp_bar.tscn" id="5_u52cf"]
 
 [node name="Arena" type="Node2D"]
 y_sort_enabled = true
@@ -102,6 +103,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="HealthBar2" parent="HUD/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("5_asdgj")]
-custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_vertical = 4
+
+[node name="ExpBar" parent="HUD/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("5_u52cf")]
+layout_mode = 2

@@ -46,7 +46,6 @@ func add_sharp_thingy(key: SharpThingyOptions) -> void:
 	var thingy_obj = SHARP_THINGY_RESOURCES.get(key)
 	var thingy: SharpThingy = sharp_thingy_scene.instantiate()
 	thingy.sprite_resource = thingy_obj.resource
-	print('set base damage ', thingy_obj.damage)
 	thingy.base_damage = thingy_obj.damage
 	thingy.damage = thingy_obj.damage
 	thingies.append(thingy)

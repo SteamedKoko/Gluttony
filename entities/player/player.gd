@@ -21,10 +21,12 @@ enum state {
 var player_state: state = state.CHILLIN
 
 signal leveled_up
+signal gained_exp
 
 var current_exp: float:
 	set(val):
 		current_exp = val
+		gained_exp.emit()
 		if current_exp > next_level_experience:
 			level_up()
 
@@ -36,13 +38,13 @@ var is_facing_left: bool = true
 func _ready():
 	pass
 
-func level_up():
-	while current_exp >= next_level_experience:
-		current_level+=1
-		next_level_experience += pow(current_level, exp_scaling) + exp_per_level
-		leveled_up.emit()
-		health.take_max_health(max_health_lost_per_level)
 	
+func level_up():
+	current_exp -= next_level_experience
+	current_level += 1
+	next_level_experience = pow(current_level, exp_scaling) + exp_per_level
+	leveled_up.emit()
+	health.take_max_health(max_health_lost_per_level)
 
 
 func get_movement():
@@ -51,16 +53,20 @@ func get_movement():
 		velocity = input * speed;
 		set_orientation()
 
+
 func set_orientation():
 	if velocity.x > 0 and is_facing_left:
 		scale.x = -1
 		is_facing_left = false
+
 	if velocity.x < 0 and !is_facing_left:
 		scale.x = -1
 		is_facing_left = true
 
+
 func add_exp(exp_to_add: float):
 	current_exp += exp_to_add
+
 
 func _physics_process(_delta: float) -> void:
 	get_movement()
