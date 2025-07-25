@@ -43,13 +43,18 @@ func _ready() -> void:
 	add_child(batch_spawn_timer)
 
 
+func restart():
+	get_tree().change_scene_to_file("res://scenes/arena/arena.tscn")
 
 func increase_spawn_speed():
 	general_spawn_timer.wait_time *= .66
 	batch_spawn_timer.wait_time *= .66
 
 func game_over():
-	print('game done go home')
+	var gover: Control = get_tree().get_first_node_in_group("GameOver")
+	get_tree().paused = true
+	gover.visible = true
+
 
 func _spawn_batch_monsters():
 	var location: Vector2 = _get_spawn_location()

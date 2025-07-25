@@ -36,6 +36,8 @@ var next_level_experience: int = 10
 var is_facing_left: bool = true
 
 func _ready():
+	health.health = 1
+	health.health_depleted.connect(_on_health_health_delpleted)
 	# for i in range(10):
 	# 	GlobalSkillManager.add_skill(GlobalSkillManager.skills.FIRE)
 	pass
@@ -78,5 +80,5 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_health_health_delpleted() -> void:
-	pass
-	# queue_free()
+	print('depleted')
+	GameManager.game_over()

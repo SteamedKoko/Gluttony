@@ -30,6 +30,10 @@ window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/dpi/allow_hidpi=false
 
+[global_group]
+
+GameOver=""
+
 [input]
 
 up={
