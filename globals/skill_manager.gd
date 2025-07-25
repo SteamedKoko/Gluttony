@@ -80,6 +80,13 @@ var ALL_SKILLS = {
 }
 
 
+func refresh():
+	for key in active_skills.keys():
+		var s = active_skills.get(key)
+		s.queue_free()
+	
+	active_skills = {}
+
 func get_skill(skill_enum: skills) -> Dictionary:
 	return ALL_SKILLS.get(skill_enum)
 

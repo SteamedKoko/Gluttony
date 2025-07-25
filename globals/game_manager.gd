@@ -1,6 +1,11 @@
 extends Node
 
-@onready var player: Player = get_tree().get_first_node_in_group("player")
+var player: Player:
+	get: 
+		if not player:
+			player = get_tree().get_first_node_in_group("player")
+		return player
+
 @onready var spawner_resource: Resource = preload("res://entities/spawner/spawner.tscn")
 @onready var sudo_resource: Resource = preload("res://entities/monsters/sudo.tscn")
 @onready var kok_resource: Resource = preload("res://entities/monsters/kok.tscn")
@@ -44,7 +49,8 @@ func _ready() -> void:
 
 
 func restart():
-	get_tree().change_scene_to_file("res://scenes/arena/arena.tscn")
+	GlobalSkillManager.refresh()
+	get_tree().reload_current_scene()
 
 func increase_spawn_speed():
 	general_spawn_timer.wait_time *= .66

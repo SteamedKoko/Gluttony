@@ -8,7 +8,6 @@ static var move_speed: float = 100
 @export var acceleration: float = 300
 @export var _exp_value: float = 10
 
-@onready var player = get_tree().get_first_node_in_group("player")
 @onready var soft_collision = $SoftCollision
 @onready var health: Health = $Health
 
@@ -24,8 +23,8 @@ func _physics_process(_delta: float) -> void:
 	
 
 func move_monster(delta) -> void:
-	if player:
-		var direction = (player.global_position - global_position).normalized()
+	if GameManager.player:
+		var direction = (GameManager.player.global_position - global_position).normalized()
 		velocity = velocity.move_toward(direction * move_speed, acceleration * delta)
 
 	if soft_collision and soft_collision.is_colliding():
@@ -37,7 +36,7 @@ func move_monster(delta) -> void:
 
 
 func perish() -> void:
-	player.current_exp += _exp_value
+	GameManager.player.current_exp += _exp_value
 	queue_free()
 
 
