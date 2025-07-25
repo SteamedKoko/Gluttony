@@ -8,12 +8,17 @@ const DEFAULT_MONSTER_HEIGHT: int = 35
 const DEFAULT_MONSTER_FRAMES: int = 4
 const DEFAULT_MONSTER_ROW: int = 1
 
-static func get_random_monster_asset() -> BaseMonster:
+
+func get_random_monster_enum() -> MonsterSprites:
 	var randomMonsterString = GlobalSpriteAssets.MonsterSprites.keys()[randi() % GlobalSpriteAssets.MonsterSprites.size()]
-	var sprite = MonsterSprites.get(randomMonsterString)	
+	return MonsterSprites.get(randomMonsterString)	
+
+func get_random_monster_asset() -> BaseMonster:
+	var sprite = get_random_monster_enum()
 	return get_monster_asset(sprite)
 
-static func get_monster_asset(sprite: MonsterSprites) -> BaseMonster:
+
+func get_monster_asset(sprite: MonsterSprites) -> BaseMonster:
 	var monster_asset: Dictionary = MONSTER_RESOURCES.get(sprite)
 	monster_asset.get_or_add("width", DEFAULT_MONSTER_WIDTH)
 	monster_asset.get_or_add("height", DEFAULT_MONSTER_HEIGHT)
@@ -29,7 +34,7 @@ static func get_monster_asset(sprite: MonsterSprites) -> BaseMonster:
 
 	return new_monster
 
-static var MONSTER_RESOURCES: Dictionary = {
+var MONSTER_RESOURCES: Dictionary = {
 	MonsterSprites.AVOCADO : { "resource" = preload("res://entities/monsters/sprites/avocado.png") },
 	MonsterSprites.BOBA: { "resource" = preload("res://entities/monsters/sprites/boba.png") },
 	MonsterSprites.BREAD: { "resource" = preload("res://entities/monsters/sprites/bread.png") },

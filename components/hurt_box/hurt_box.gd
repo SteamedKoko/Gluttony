@@ -45,4 +45,3 @@ func try_receive_continuous_damage(damage: int, knockback: float, dmg_cooldown: 
 
 func remove_damage_timeout(key: String):
 	damage_source_dictionary.erase(key)
-

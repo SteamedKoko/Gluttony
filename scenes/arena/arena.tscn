@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://gwslf667jj30"]
+[gd_scene load_steps=7 format=4 uid="uid://gwslf667jj30"]
 
 [ext_resource type="TileSet" uid="uid://cm8jf80i4ndxv" path="res://scenes/tileset/overworld.tres" id="1_asdgj"]
 [ext_resource type="PackedScene" uid="uid://cetseqdkeuyvr" path="res://entities/player/player.tscn" id="3_5tue2"]
-[ext_resource type="PackedScene" uid="uid://c2rh1w6xsy484" path="res://entities/spawner/spawner.tscn" id="3_aj7ud"]
 [ext_resource type="PackedScene" uid="uid://co6ketbnvk6rd" path="res://ui/level_up_menu/level_up_menu.tscn" id="4_aj7ud"]
 [ext_resource type="PackedScene" uid="uid://cwvcdouwcxna2" path="res://ui/health_bar/health_bar.tscn" id="5_asdgj"]
 [ext_resource type="PackedScene" uid="uid://bxievinm2sb74" path="res://ui/level_label/level_label.tscn" id="5_jx0ua"]
@@ -27,42 +26,6 @@ tile_set = ExtResource("1_asdgj")
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAcACcAAAAKAAAAAAArAEQAAAAKAAAAAAAdAEkAAAAKAAAAAAAoACcAAAAKAAAAAAAwABMAAAAKAAAAAAAeAB0AAAAKAAAAAABAABwAAAAKAAAAAABMAA0AAAAKAAAAAABMACwAAAAKAAAAAAA7AEYAAAAKAAAAAABMAFUAAAAKAAAAAAA4AFkAAAAKAAAAAABeAD8AAAAKAAAAAAAoAAwAAAAAAAAAAAAaABcAAAAAAAAAAAApACAAAAAAAAAAAABDABAAAAAAAAAAAABJACQAAAAAAAAAAAA2AB8AAAAAAAAAAAA+ADoAAAAAAAAAAABKAEgAAAAAAAAAAABBAFEAAAAAAAAAAAAmAFYAAAAAAAAAAAAaAD4AAAAAAAAAAAAcAC4AAAAAAAAAAAAEACwAAAACAAQAAAAOACMAAAACAAQAAAAGABQAAAACAAQAAAAGAAUAAAACAAQAAAA9AAMAAAACAAQAAAAgAAIAAAACAAQAAABdAAMAAAACAAQAAABXABMAAAACAAQAAABhACIAAAACAAQAAABjAC8AAAACAAQAAABXAEYAAAACAAQAAABhAF8AAAACAAQAAABOAGIAAAACAAQAAAA5AF0AAAACAAQAAAAqAGMAAAACAAQAAAAIAF0AAAACAAQAAAACAGIAAAACAAQAAAAMAEMAAAACAAQAAAAHADgAAAADAAQAAAA0AAEAAAADAAQAAABfABIAAAADAAQAAABZACAAAAADAAQAAABYADsAAAADAAQAAABbAFkAAAADAAQAAABAAGIAAAADAAQAAAA=")
 tile_set = ExtResource("1_asdgj")
-
-[node name="Spawner" parent="." instance=ExtResource("3_aj7ud")]
-position = Vector2(-153, 2463)
-
-[node name="Spawner2" parent="." instance=ExtResource("3_aj7ud")]
-position = Vector2(-108, 688)
-
-[node name="Spawner3" parent="." instance=ExtResource("3_aj7ud")]
-position = Vector2(866, -149)
-
-[node name="Spawner4" parent="." instance=ExtResource("3_aj7ud")]
-position = Vector2(2459, -170)
-
-[node name="Spawner5" parent="." instance=ExtResource("3_aj7ud")]
-position = Vector2(3529, 639)
-
-[node name="Spawner6" parent="." instance=ExtResource("3_aj7ud")]
-position = Vector2(3507, 2348)
-
-[node name="Spawner7" parent="." instance=ExtResource("3_aj7ud")]
-position = Vector2(2413, 3442)
-
-[node name="Spawner8" parent="." instance=ExtResource("3_aj7ud")]
-position = Vector2(892, 3350)
-
-[node name="Spawner9" parent="." instance=ExtResource("3_aj7ud")]
-position = Vector2(1459, 1595)
-
-[node name="Spawner10" parent="." instance=ExtResource("3_aj7ud")]
-position = Vector2(1711, 1710)
-
-[node name="Spawner11" parent="." instance=ExtResource("3_aj7ud")]
-position = Vector2(1730, 1595)
-
-[node name="Spawner12" parent="." instance=ExtResource("3_aj7ud")]
-position = Vector2(1489, 1715)
 
 [node name="Popup" type="CanvasLayer" parent="."]
 layer = 5

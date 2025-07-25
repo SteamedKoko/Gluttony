@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://dg6xoauw5o1go"]
+
+[ext_resource type="Script" uid="uid://x5fi2j5raf16" path="res://entities/monsters/sudo.gd" id="1_rmyym"]
+[ext_resource type="Texture2D" uid="uid://ctmw0pdf7rc5n" path="res://entities/monsters/sprites/haxe_sa_sprite_sheet.png" id="2_0kqjh"]
+[ext_resource type="PackedScene" uid="uid://cd07nhfaef5cy" path="res://components/attack/attack.tscn" id="2_m524b"]
+[ext_resource type="PackedScene" uid="uid://dtqtnwsjxg55d" path="res://components/health/health.tscn" id="4_fjo18"]
+[ext_resource type="PackedScene" uid="uid://cy0ic1sihaot4" path="res://components/hurt_box/hurt_box.tscn" id="5_ox11x"]
+[ext_resource type="PackedScene" uid="uid://cmiuc2trhsyq7" path="res://components/soft_collision/soft_collision.tscn" id="6_ox11x"]
+[ext_resource type="PackedScene" uid="uid://diacs8ggepls7" path="res://entities/damage_display/damage_display.tscn" id="7_30gfk"]
+[ext_resource type="PackedScene" uid="uid://cwvcdouwcxna2" path="res://ui/health_bar/health_bar.tscn" id="8_oneuf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m524b"]
+radius = 17.0294
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m524b"]
+atlas = ExtResource("2_0kqjh")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66fv0"]
+atlas = ExtResource("2_0kqjh")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjo18"]
+atlas = ExtResource("2_0kqjh")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox11x"]
+atlas = ExtResource("2_0kqjh")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_30gfk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m524b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66fv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjo18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox11x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Sudo" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_rmyym")
+move_speed = 150.0
+metadata/_custom_type_script = "uid://chbsh6fscghxc"
+
+[node name="Attack" parent="." instance=ExtResource("2_m524b")]
+collision_mask = 8
+damage = 5.0
+damage_cooldown = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2(-13.475, 32.01)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_m524b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_30gfk")
+autoplay = "default"
+frame_progress = 0.147036
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15.675, 74.95)
+shape = SubResource("CircleShape2D_m524b")
+
+[node name="Health" parent="." instance=ExtResource("4_fjo18")]
+max_health = 1000
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("5_ox11x")]
+collision_layer = 4
+health = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-13.475, 32.01)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_m524b")
+
+[node name="SoftCollision" parent="." instance=ExtResource("6_ox11x")]
+position = Vector2(-17.15, 74.04)
+
+[node name="DamageDisplay" parent="." instance=ExtResource("7_30gfk")]
+position = Vector2(-16.565, -9.08)
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("8_oneuf")]
+custom_minimum_size = Vector2(204.97, 88.515)
+offset_top = -66.5
+offset_bottom = -41.5
+health = NodePath("../Health")

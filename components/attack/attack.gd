@@ -3,8 +3,7 @@ extends Area2D
 
 @export var damage: float = 0
 @export var knockback = 0
-
-var damage_cooldown: float = 0
+@export var damage_cooldown: float = 0
 
 signal dealt_damage()
 

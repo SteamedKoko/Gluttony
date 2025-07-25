@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var speed: float = 250
 @export var damage_modifier: float = 1
-@export var max_health_lost_per_level: int = 10
+@export var max_health_lost_per_level: int = 5
 
 @export var exp_per_level: float = 10
 @export var exp_scaling: float = 3
@@ -37,7 +37,6 @@ var is_facing_left: bool = true
 
 func _ready():
 	pass
-
 	
 func level_up():
 	current_exp -= next_level_experience

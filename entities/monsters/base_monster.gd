@@ -10,11 +10,12 @@ extends CharacterBody2D
 @onready var soft_collision = $SoftCollision
 @onready var health: Health = $Health
 
-var move_speed_mult = 4
+var move_speed_mult: float = 2
 var _exp_value: float = 10
 
 func _ready() -> void:
 	health.health_depleted.connect(perish)
+
 
 func _physics_process(_delta: float) -> void:
 	move_monster(_delta)
@@ -35,4 +36,8 @@ func move_monster(delta) -> void:
 
 func perish() -> void:
 	player.current_exp += _exp_value
+	queue_free()
+
+
+func remove() -> void:
 	queue_free()

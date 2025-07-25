@@ -17,7 +17,19 @@ game mechanics:
 
 
 today:
-* exp bar
+    * take more damage
+    * vacuum
+    * make enemies bigger
+    * make enemies lower health
+    * move slower
+    * enemies shoot death pellets
+    * make enemies faster
+    * more monsters spawn
+
+    * mini boss
+    * boss
+
+    * wave management
 
 Gluttony
 
@@ -39,14 +51,6 @@ work to do:
     * damaging aura
     * shoot death pellets - salt n pepper gun
 * detriments
-    * take more damage
-    * vacuum
-    * make enemies bigger
-    * make enemies lower health
-    * move slower
-    * enemies shoot death pellets
-    * make enemies faster
-    * more monsters spawn
 
 
 DONE
@@ -67,6 +71,7 @@ DONE
 * spawning patterns:
 * ui
     * health bar
+    * exp bar
     * damage numbers
 * level up
 * skills

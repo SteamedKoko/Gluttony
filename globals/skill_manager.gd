@@ -71,7 +71,7 @@ func get_random_skills(numberToGrab: int) -> Array:
 	return to_shuffle.slice(0, min(numberToGrab, to_shuffle.size()))
 
 
-func alter_skills(skill_enum: skills) -> void:
+func add_skill(skill_enum: skills) -> void:
 	var skill: BaseSkill = active_skills.get(skill_enum)
 	if skill:
 		skill.level_up()

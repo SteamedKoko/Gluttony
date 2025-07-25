@@ -1,10 +1,13 @@
 extends Control
 
 @onready var progressBar: TextureProgressBar = $MarginContainer/TextureProgressBar
-@onready var health: Health = GameManager.player.health
+@export var health: Health
 
 #listen for signal of hp changing, update vals
 func _ready() -> void:
+	if not health:
+		health = GameManager.player.health
+
 	health.health_changed.connect(update_health_bar)
 	update_health_bar()
 
