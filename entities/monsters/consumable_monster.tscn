@@ -27,7 +27,7 @@ scale = Vector2(1.425, 1.425)
 
 [node name="Attack" parent="." instance=ExtResource("3_8t66q")]
 collision_mask = 8
-damage = 5.0
+damage = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
 shape = SubResource("RectangleShape2D_8t66q")

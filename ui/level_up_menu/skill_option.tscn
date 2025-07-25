@@ -122,9 +122,36 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="SkillDescription" type="RichTextLabel" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer2/ColorRect2/ColorRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer2/ColorRect2/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer2/ColorRect2/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="SkillDescription" type="RichTextLabel" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer2/ColorRect2/ColorRect/MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer2/ColorRect2/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer2/ColorRect2/ColorRect/MarginContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.481273, 1.09497e-06, 2.40654e-07, 1)
+text = "HOWEVER
+"
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer2/ColorRect2/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DetrimentDescription" type="RichTextLabel" parent="NinePatchRect/MarginContainer/VBoxContainer/SkillIconContainer2/ColorRect2/ColorRect/MarginContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(0.482353, 0, 0, 1)
 
 [node name="AcceptSkillContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2

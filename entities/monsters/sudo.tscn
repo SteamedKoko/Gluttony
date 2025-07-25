@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dg6xoauw5o1go"]
 
-[ext_resource type="Script" uid="uid://x5fi2j5raf16" path="res://entities/monsters/sudo.gd" id="1_rmyym"]
+[ext_resource type="Script" uid="uid://x5fi2j5raf16" path="res://entities/monsters/boss_monster.gd" id="1_rmyym"]
 [ext_resource type="Texture2D" uid="uid://ctmw0pdf7rc5n" path="res://entities/monsters/sprites/haxe_sa_sprite_sheet.png" id="2_0kqjh"]
 [ext_resource type="PackedScene" uid="uid://cd07nhfaef5cy" path="res://components/attack/attack.tscn" id="2_m524b"]
 [ext_resource type="PackedScene" uid="uid://dtqtnwsjxg55d" path="res://components/health/health.tscn" id="4_fjo18"]
@@ -51,7 +51,6 @@ animations = [{
 [node name="Sudo" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_rmyym")
-move_speed = 150.0
 metadata/_custom_type_script = "uid://chbsh6fscghxc"
 
 [node name="Attack" parent="." instance=ExtResource("2_m524b")]
@@ -75,7 +74,7 @@ position = Vector2(-15.675, 74.95)
 shape = SubResource("CircleShape2D_m524b")
 
 [node name="Health" parent="." instance=ExtResource("4_fjo18")]
-max_health = 1000
+max_health = 5000
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("5_ox11x")]
 collision_layer = 4
@@ -88,6 +87,8 @@ shape = SubResource("CircleShape2D_m524b")
 
 [node name="SoftCollision" parent="." instance=ExtResource("6_ox11x")]
 position = Vector2(-17.15, 74.04)
+collision_layer = 32
+collision_mask = 32
 
 [node name="DamageDisplay" parent="." instance=ExtResource("7_30gfk")]
 position = Vector2(-16.565, -9.08)

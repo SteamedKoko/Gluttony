@@ -12,7 +12,6 @@ func update_progress():
     var tween: Tween = create_tween()
     
     tween.tween_property(progress, "value", GameManager.player.current_exp, .2)
-    print("value: %s, max: %s" % [progress.value, progress.max_value])
 
 
 

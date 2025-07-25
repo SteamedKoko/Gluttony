@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bgis38s4c5bfa"]
 
-[ext_resource type="Script" uid="uid://x5fi2j5raf16" path="res://entities/monsters/sudo.gd" id="1_4cky5"]
+[ext_resource type="Script" uid="uid://x5fi2j5raf16" path="res://entities/monsters/boss_monster.gd" id="1_4cky5"]
 [ext_resource type="PackedScene" uid="uid://cd07nhfaef5cy" path="res://components/attack/attack.tscn" id="2_jfqvj"]
 [ext_resource type="PackedScene" uid="uid://dtqtnwsjxg55d" path="res://components/health/health.tscn" id="4_8l20j"]
 [ext_resource type="PackedScene" uid="uid://cy0ic1sihaot4" path="res://components/hurt_box/hurt_box.tscn" id="5_nc03i"]
@@ -15,7 +15,7 @@ size = Vector2(29.4608, 33.463)
 [node name="Kok" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_4cky5")
-move_speed = 150.0
+_exp_value = 300.0
 metadata/_custom_type_script = "uid://chbsh6fscghxc"
 
 [node name="Attack" parent="." instance=ExtResource("2_jfqvj")]
@@ -29,7 +29,7 @@ scale = Vector2(8.995, 8.995)
 shape = SubResource("RectangleShape2D_4cky5")
 
 [node name="Health" parent="." instance=ExtResource("4_8l20j")]
-max_health = 5000
+max_health = 50000
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("5_nc03i")]
 collision_layer = 4
@@ -42,6 +42,8 @@ shape = SubResource("RectangleShape2D_4cky5")
 
 [node name="SoftCollision" parent="." instance=ExtResource("6_gu0wj")]
 position = Vector2(-2.585, 11.37)
+collision_layer = 32
+collision_mask = 32
 
 [node name="DamageDisplay" parent="." instance=ExtResource("7_figvn")]
 

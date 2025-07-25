@@ -9,14 +9,16 @@ var damage_source_dictionary: Dictionary
 signal took_damage(dmg)
 signal got_knocked_back(knockback)
 
+var damage_multiplyer: float = 1
+
 var is_invul: bool = false
 
 func try_receive_damage(damage: int, knockback: float) -> bool:
 	if is_invul:
 		return false
 
-	health.take_health(damage)
-	took_damage.emit(damage)
+	health.take_health(damage * damage_multiplyer)
+	took_damage.emit(damage * damage_multiplyer)
 
 	if knockback > 0:
 		got_knocked_back.emit(knockback)
@@ -34,8 +36,8 @@ func try_receive_continuous_damage(damage: int, knockback: float, dmg_cooldown: 
 	damage_source_dictionary[key] = 0
 	var dmg_timer: SceneTreeTimer = get_tree().create_timer(dmg_cooldown)
 	dmg_timer.timeout.connect(remove_damage_timeout.bind(key))
-	health.take_health(damage)
-	took_damage.emit(damage)
+	health.take_health(damage * damage_multiplyer)
+	took_damage.emit(damage * damage_multiplyer)
 
 	if knockback > 0:
 		got_knocked_back.emit(knockback)

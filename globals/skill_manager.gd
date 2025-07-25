@@ -13,13 +13,38 @@ enum skills {
 enum detriments { #todo all
 	TAKE_MORE_DAMAGE,
 	MOVE_SLOWER,
-	VACUUM,
+	# VACUUM,
 	MAKE_ENEMIES_BIGGER,
-	ENEMIES_SHOOT_DEATH_PELLETS,
-	MAKE_ENEMIES_FASTER 
+	# ENEMIES_SHOOT_DEATH_PELLETS,
+	MAKE_ENEMIES_FASTER,
+	MORE_ENEMIES_SPAWN
 }
 
+	# take more damage
+	# move slower
+	# make enemies bigger
+	# make enemies faster
+	# more monsters spawn
+
 var active_skills = {}
+
+var ALL_DETRIMENTS = {
+	detriments.TAKE_MORE_DAMAGE: {
+		"name": "Take more damage"
+	},
+	detriments.MOVE_SLOWER: {
+		"name": "Move slower"
+	},
+	detriments.MAKE_ENEMIES_BIGGER: {
+		"name": "Bigger Enemies"
+	},
+	detriments.MAKE_ENEMIES_FASTER: {
+		"name": "Faster Enemies"
+	},
+	detriments.MORE_ENEMIES_SPAWN: {
+		"name": "More Enemies"
+	},
+}
 
 var ALL_SKILLS = {
 	# skills.AURA: {
@@ -54,9 +79,17 @@ var ALL_SKILLS = {
 	}
 }
 
+
 func get_skill(skill_enum: skills) -> Dictionary:
 	return ALL_SKILLS.get(skill_enum)
 
+func get_detriment(detriment_enum: detriments) -> Dictionary:
+	return ALL_DETRIMENTS.get(detriment_enum)
+
+func get_random_detriments(numberToGrab: int) -> Array:
+	var d = detriments.keys()
+	d.shuffle()
+	return d.slice(0, min(numberToGrab, d.size()))
 
 func get_random_skills(numberToGrab: int) -> Array:
 	var to_shuffle = []
@@ -70,6 +103,22 @@ func get_random_skills(numberToGrab: int) -> Array:
 	to_shuffle.shuffle()
 	return to_shuffle.slice(0, min(numberToGrab, to_shuffle.size()))
 
+
+func add_detriment(detriment_enum: detriments) -> void:
+	match detriment_enum:
+		detriments.MAKE_ENEMIES_BIGGER:
+			BaseMonster.default_scale *= 1.2
+		detriments.MOVE_SLOWER:
+			GameManager.player.debuff_speed()
+		detriments.TAKE_MORE_DAMAGE:
+			GameManager.player.hurt_box.damage_multiplyer += 1
+		detriments.MAKE_ENEMIES_FASTER: 
+			BaseMonster.move_speed *= 1.25
+		detriments.MORE_ENEMIES_SPAWN: 
+			GameManager.increase_spawn_speed()
+
+
+	
 
 func add_skill(skill_enum: skills) -> void:
 	var skill: BaseSkill = active_skills.get(skill_enum)

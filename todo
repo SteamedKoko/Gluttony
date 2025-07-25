@@ -18,18 +18,17 @@ game mechanics:
 
 today:
     * take more damage
-    * vacuum
     * make enemies bigger
-    * make enemies lower health
-    * move slower
-    * enemies shoot death pellets
     * make enemies faster
     * more monsters spawn
+    * move slower
 
-    * mini boss
-    * boss
+    * enemies shoot death pellets
 
-    * wave management
+    * vacuum
+    * make enemies lower health
+
+
 
 Gluttony
 
@@ -39,10 +38,8 @@ work to do:
 * player:
     * needs a skill maanger, probably a component to stuff all skills into
 * monsters:
+    * wave management
 * spawning patterns:
-    * rate of spawning
-    * number of monsters spawning
-    * type spawning
 * level up
     * choose from a randomized skill, paired with a randomized detriment (ui) subtract from max hp
     * level up choices
@@ -68,7 +65,13 @@ DONE
     * spawning
     * attributes: hp, dmg, movespeed
     * knockback
+    * mini boss
+    * boss
 * spawning patterns:
+    * rate of spawning
+    * number of monsters spawning
+    * type spawning
+
 * ui
     * health bar
     * exp bar
