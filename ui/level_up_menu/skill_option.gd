@@ -3,6 +3,7 @@ extends MarginContainer
 
 var skill: SkillManager.skills
 var detriment: SkillManager.detriments
+var button_number: int
 
 signal chose_skill(skill: SkillManager.skills)
 
@@ -12,5 +13,13 @@ func _ready() -> void:
 	%SkillSprite.texture = skill_info.get("icon")
 	%SkillDescription.text = skill_info.get("description")
 	%DetrimentDescription.text = detriment_info.get("name")
-	%TakeSkillButton.text = "Take"
-	%TakeSkillButton.pressed.connect(func(): chose_skill.emit(skill, detriment))
+	%TakeSkillButton.text = "Press " + str(button_number-48)
+	%TakeSkillButton.pressed.connect(pick_skill)
+
+
+func pick_skill():
+	chose_skill.emit(skill, detriment)
+
+func _process(_delta: float) -> void:
+	if Input.is_key_pressed(button_number):
+		pick_skill()
