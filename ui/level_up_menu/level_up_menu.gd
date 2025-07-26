@@ -8,7 +8,7 @@ const skill_options_to_add = 3
 func _ready() -> void:
 	GameManager.player.leveled_up.connect(func (): levels_left += 1)
 	visible = false
-	opt_for_skill()
+	# opt_for_skill()
 
 
 func opt_for_skill() -> void:
@@ -19,14 +19,14 @@ func opt_for_skill() -> void:
 	self.visible = true
 
 
-func finish_skill_choice(skill: GlobalSkillManager.skills, detriment: GlobalSkillManager.detriments) -> void:
+func finish_skill_choice(skill: SkillManager.skills, detriment: SkillManager.detriments) -> void:
 	self.visible = false
 	for child in %SkillOptionContainer.get_children():
 		child.call_deferred('queue_free')
 
 	levels_left = max(0, levels_left-1)
-	GlobalSkillManager.add_skill(skill)
-	GlobalSkillManager.add_detriment(detriment)
+	GameManager.skill_manager.add_skill(skill)
+	GameManager.skill_manager.add_detriment(detriment)
 
 	if levels_left > 0:
 		opt_for_skill()
@@ -35,13 +35,13 @@ func finish_skill_choice(skill: GlobalSkillManager.skills, detriment: GlobalSkil
 	get_tree().paused = false
 
 func populate_random_skills():
-	var skills = GlobalSkillManager.get_random_skills(skill_options_to_add)
-	var detriments = GlobalSkillManager.get_random_detriments(skill_options_to_add)
+	var skills = GameManager.skill_manager.get_random_skills(skill_options_to_add)
+	var detriments = GameManager.skill_manager.get_random_detriments(skill_options_to_add)
 
 	for skill in skills:
 		var option: SkillOption = skill_option_resource.instantiate()
-		option.skill = GlobalSkillManager.skills.get(skill)
-		option.detriment = GlobalSkillManager.detriments.get(detriments.pop_back())
+		option.skill = GameManager.skill_manager.skills.get(skill)
+		option.detriment = GameManager.skill_manager.detriments.get(detriments.pop_back())
 		option.chose_skill.connect(finish_skill_choice)
 		%SkillOptionContainer.add_child(option)
 	

@@ -17,17 +17,9 @@ game mechanics:
 
 
 today:
-    * take more damage
-    * make enemies bigger
-    * make enemies faster
-    * more monsters spawn
-    * move slower
-
-    * enemies shoot death pellets
-
     * vacuum
+    * enemies shoot death pellets
     * make enemies lower health
-
 
 
 Gluttony
@@ -36,13 +28,9 @@ work to do:
 * general:
     * shadows
 * player:
-    * needs a skill maanger, probably a component to stuff all skills into
 * monsters:
-    * wave management
 * spawning patterns:
 * level up
-    * choose from a randomized skill, paired with a randomized detriment (ui) subtract from max hp
-    * level up choices
 * ui
 * skills
     * damaging aura
@@ -59,6 +47,7 @@ DONE
     * leveling
     * get exp
     * camera follows player
+    * needs a skill maanger, probably a component to stuff all skills into
 * monsters
     * cookie cutter sprites from the foods
     * movement towards player
@@ -68,19 +57,25 @@ DONE
     * mini boss
     * boss
 * spawning patterns:
+    * wave management
     * rate of spawning
     * number of monsters spawning
     * type spawning
-
 * ui
     * health bar
     * exp bar
     * damage numbers
 * level up
+    * choose from a randomized skill, paired with a randomized detriment (ui) subtract from max hp
+    * level up choices
 * skills
     * rotating sharp thingies > fork? knife? spork?
     * shoot fire in a direction
     * lightning
     * dash
 * detriments
-
+    * take more damage
+    * make enemies bigger
+    * make enemies faster
+    * more monsters spawn
+    * move slower

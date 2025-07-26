@@ -1,9 +1,8 @@
 extends Control
 
 func _ready() -> void:
-    visible = false
+	visible = false
 
 func _on_button_pressed() -> void:
-    print('pressed')
-    GameManager.restart()
-
+	print('pressed')
+	GameManager.restart()

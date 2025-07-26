@@ -1,5 +1,8 @@
+class_name SkillManager
 extends Node2D
 
+var monster_speed_multiplyer = 1
+var monster_scale_multiplyer = 1
 
 enum skills {
 	# AURA, #todo
@@ -80,12 +83,12 @@ var ALL_SKILLS = {
 }
 
 
-func refresh():
-	for key in active_skills.keys():
-		var s = active_skills.get(key)
-		s.queue_free()
-	
-	active_skills = {}
+# func refresh():
+# 	for key in active_skills.keys():
+# 		var s = active_skills.get(key)
+# 		s.queue_free()
+# 	
+# 	active_skills = {}
 
 func get_skill(skill_enum: skills) -> Dictionary:
 	return ALL_SKILLS.get(skill_enum)
@@ -114,13 +117,13 @@ func get_random_skills(numberToGrab: int) -> Array:
 func add_detriment(detriment_enum: detriments) -> void:
 	match detriment_enum:
 		detriments.MAKE_ENEMIES_BIGGER:
-			BaseMonster.default_scale *= 1.2
+			monster_scale_multiplyer *= 1.2
 		detriments.MOVE_SLOWER:
 			GameManager.player.debuff_speed()
 		detriments.TAKE_MORE_DAMAGE:
 			GameManager.player.hurt_box.damage_multiplyer += 1
 		detriments.MAKE_ENEMIES_FASTER: 
-			BaseMonster.move_speed *= 1.25
+			monster_speed_multiplyer *= 1.25
 		detriments.MORE_ENEMIES_SPAWN: 
 			GameManager.increase_spawn_speed()
 

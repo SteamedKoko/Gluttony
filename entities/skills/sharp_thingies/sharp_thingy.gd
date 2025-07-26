@@ -1,8 +1,6 @@
 class_name SharpThingy
 extends Attack
 
-@onready var player: Player = get_tree().get_first_node_in_group("player")
-
 var base_damage: int = 0
 
 var rotation_speed = 90.0 
@@ -16,6 +14,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	current_angle += deg_to_rad(rotation_speed) * delta
-	position = player.global_position + (Vector2(cos(current_angle), sin(current_angle)) * radius)
+	position = GameManager.player.global_position + (Vector2(cos(current_angle), sin(current_angle)) * radius)
 
 	super._physics_process(delta)

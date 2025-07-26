@@ -1,8 +1,8 @@
 class_name BaseMonster
 extends CharacterBody2D
 
-static var default_scale: float = 1
-static var move_speed: float = 100
+var default_scale: float = 1 * GameManager.skill_manager.monster_scale_multiplyer
+var move_speed: float = 100 * GameManager.skill_manager.monster_speed_multiplyer
 
 @export var push_strength = 800
 @export var acceleration: float = 300

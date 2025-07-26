@@ -1,12 +1,20 @@
 extends Node
 
-var player: Player:
+@onready var player: Player:
 	get: 
 		if not player:
 			player = get_tree().get_first_node_in_group("player")
 		return player
 
+@onready var skill_manager: SkillManager:
+	get:
+		if not skill_manager:
+			skill_manager = skill_manager_resource.instantiate()
+			add_child(skill_manager)
+		return skill_manager
+
 @onready var spawner_resource: Resource = preload("res://entities/spawner/spawner.tscn")
+@onready var skill_manager_resource: Resource = preload("res://components/skill_manager/skill_manager.tscn")
 @onready var sudo_resource: Resource = preload("res://entities/monsters/sudo.tscn")
 @onready var kok_resource: Resource = preload("res://entities/monsters/kok.tscn")
 
@@ -29,9 +37,10 @@ var batch_spawn_formation = {
 }
 
 func _ready() -> void:
-	# miniboss = sudo_resource.instantiate()
-	# boss = kok_resource.instantiate()
+	load_up_shiat()
 
+
+func load_up_shiat():
 	spawner = spawner_resource.instantiate()
 	add_child(spawner)
 
@@ -47,10 +56,18 @@ func _ready() -> void:
 	batch_spawn_timer.timeout.connect(_spawn_batch_monsters)
 	add_child(batch_spawn_timer)
 
-
 func restart():
-	GlobalSkillManager.refresh()
-	get_tree().reload_current_scene()
+	for child in get_tree().get_first_node_in_group("Stage").get_children():
+		child.queue_free()
+
+	general_spawn_timer.queue_free()
+	batch_spawn_timer.queue_free()
+	spawner.queue_free()
+	skill_manager.queue_free()
+	skill_manager = null
+	get_tree().change_scene_to_file("res://scenes/arena/arena.tscn")
+	load_up_shiat()
+	get_tree().paused = false
 
 func increase_spawn_speed():
 	general_spawn_timer.wait_time *= .66
@@ -66,11 +83,22 @@ func _spawn_batch_monsters():
 	var location: Vector2 = _get_spawn_location()
 	#spawn close to player for testing
 	# location -= (player.global_position.distance_to(location) * player.global_position.direction_to(location)) / 2
-	for row in range(batch_spawn_formation.get("rows")):
-		for col in range(batch_spawn_formation.get("columns")):
+
+	var direction = player.global_position.direction_to(location)
+	var should_spawn_row = abs(direction.x) > abs(direction.y)
+
+	var rows_to_spawn = batch_spawn_formation.get("rows") if should_spawn_row else batch_spawn_formation.get("columns")
+	var cols_to_spawn = batch_spawn_formation.get("columns") if should_spawn_row else batch_spawn_formation.get("rows")
+
+	var x_direction = 1 if direction.x > 0 else -1
+	var y_direction = 1 if direction.y > 0 else -1
+
+	for row in range(rows_to_spawn):
+		for col in range(cols_to_spawn):
 			var sprite_enum = GlobalSpriteAssets.get_random_monster_enum()
-			var offset = location + (Vector2(row, col) * batch_spawn_formation.offset)
+			var offset = location + (Vector2(row, col) * batch_spawn_formation.offset * skill_manager.monster_scale_multiplyer * Vector2(x_direction, y_direction))
 			spawner._spawn_monster(offset, sprite_enum)
+
 
 func _spawn_monster():
 	var location: Vector2 = _get_spawn_location()
@@ -89,7 +117,7 @@ func _spawn_boss(boss_resource: Resource) -> BossMonster:
 	var boss_instance: BossMonster = boss_resource.instantiate()
 	var location: Vector2 = _get_spawn_location()
 	boss_instance.global_position = location
-	add_child(boss_instance)
+	spawner.add_child(boss_instance)
 	return boss_instance
 	
 func _spawn_main_boss(boss_resource: Resource):
@@ -98,10 +126,10 @@ func _spawn_main_boss(boss_resource: Resource):
 
 
 func _process(_delta: float) -> void:
-	if player.current_level >= 10 and not spawned_mini_boss:
+	if player and player.current_level >= 10 and not spawned_mini_boss:
 		spawned_mini_boss = true
 		_spawn_boss(sudo_resource)
 
-	if player.current_level >= 20 and not spawned_main_boss:
+	if player and player.current_level >= 20 and not spawned_main_boss:
 		spawned_main_boss = true
 		_spawn_main_boss(kok_resource)

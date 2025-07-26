@@ -17,10 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GameManager="*res://globals/game_manager.gd"
 GlobalSpriteAssets="*res://globals/global_sprite_assets.gd"
 DamageNumber="*res://globals/damage_number.gd"
-GlobalSkillManager="*res://globals/skill_manager.gd"
-GameManager="*res://globals/game_manager.gd"
 
 [display]
 

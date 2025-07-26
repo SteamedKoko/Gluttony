@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bxievinm2sb74" path="res://ui/level_label/level_label.tscn" id="5_jx0ua"]
 [ext_resource type="PackedScene" uid="uid://b5pj8jbpfq6hj" path="res://ui/exp_bar/exp_bar.tscn" id="5_u52cf"]
 
-[node name="Arena" type="Node2D"]
+[node name="Arena" type="Node2D" groups=["Stage"]]
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_5tue2")]
