@@ -12,7 +12,7 @@ func _ready() -> void:
 
 
 func opt_for_skill() -> void:
-	get_tree().paused = true
+	GameManager.pause()
 
 	#do this before it's visible so that it will be placed in the right spot
 	populate_random_skills()
@@ -32,7 +32,7 @@ func finish_skill_choice(skill: SkillManager.skills, detriment: SkillManager.det
 		opt_for_skill()
 		return
 
-	get_tree().paused = false
+	GameManager.unpause()
 
 func populate_random_skills():
 	var skills = GameManager.skill_manager.get_random_skills(skill_options_to_add)

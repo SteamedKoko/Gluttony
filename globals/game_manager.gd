@@ -23,11 +23,14 @@ var rand_y_positions: Array = [400, -400]
 
 var spawner: Spawner
 
+var is_endgame: bool = false
 var spawned_mini_boss: bool = false
 var spawned_main_boss: bool = false
 
 var general_spawn_timer: Timer
 var batch_spawn_timer: Timer
+
+var active_pauses: int = 0
 
 #3 rows 10 columns for the batch formation
 var batch_spawn_formation = {
@@ -38,6 +41,7 @@ var batch_spawn_formation = {
 
 func _ready() -> void:
 	load_up_shiat()
+	game_win()
 
 
 func load_up_shiat():
@@ -56,6 +60,38 @@ func load_up_shiat():
 	batch_spawn_timer.timeout.connect(_spawn_batch_monsters)
 	add_child(batch_spawn_timer)
 
+func pause():
+	get_tree().paused = true
+	active_pauses += 1
+
+func unpause():
+	active_pauses = max(0, active_pauses-1)
+	if active_pauses == 0:
+		get_tree().paused = false
+
+func game_over():
+	var gover: Control = get_tree().get_first_node_in_group("GameOver")
+	pause()
+	gover.visible = true
+
+func game_win():
+	pause()
+	#clear minions, play the scene and continue with bosses
+	var gwin: Control = get_tree().get_first_node_in_group("GameWin")
+	for child in spawner.get_children():
+		child.queue_free()
+
+	general_spawn_timer.timeout.disconnect(_spawn_monster)
+	batch_spawn_timer.timeout.disconnect(_spawn_batch_monsters)
+	general_spawn_timer.timeout.connect(_spawn_random_boss)
+	batch_spawn_timer.timeout.connect(_spawn_batch_bosses)
+
+	gwin.visible = true
+
+func continue_boss_mode():
+	unpause()
+
+
 func restart():
 	for child in get_tree().get_first_node_in_group("Stage").get_children():
 		child.queue_free()
@@ -67,19 +103,25 @@ func restart():
 	skill_manager = null
 	get_tree().change_scene_to_file("res://scenes/arena/arena.tscn")
 	load_up_shiat()
-	get_tree().paused = false
+
 
 func increase_spawn_speed():
 	general_spawn_timer.wait_time *= .66
 	batch_spawn_timer.wait_time *= .66
 
-func game_over():
-	var gover: Control = get_tree().get_first_node_in_group("GameOver")
-	get_tree().paused = true
-	gover.visible = true
-
 
 func _spawn_batch_monsters():
+	var positions = _get_batch_positions()
+	for position in positions:
+		var sprite_enum = GlobalSpriteAssets.get_random_monster_enum()
+		spawner._spawn_monster(position, sprite_enum)
+
+func _spawn_batch_bosses():
+	var positions = _get_batch_positions()
+	for position in positions:
+		var boss = _spawn_boss_at(position, sudo_resource)
+
+func _get_batch_positions() -> Array[Vector2]:
 	var location: Vector2 = _get_spawn_location()
 	#spawn close to player for testing
 	# location -= (player.global_position.distance_to(location) * player.global_position.direction_to(location)) / 2
@@ -93,12 +135,13 @@ func _spawn_batch_monsters():
 	var x_direction = 1 if direction.x > 0 else -1
 	var y_direction = 1 if direction.y > 0 else -1
 
+	var positions: Array[Vector2] = []
 	for row in range(rows_to_spawn):
 		for col in range(cols_to_spawn):
-			var sprite_enum = GlobalSpriteAssets.get_random_monster_enum()
-			var offset = location + (Vector2(row, col) * batch_spawn_formation.offset * skill_manager.monster_scale_multiplyer * Vector2(x_direction, y_direction))
-			spawner._spawn_monster(offset, sprite_enum)
-
+			positions.append(location + (Vector2(row, col) * batch_spawn_formation.offset * skill_manager.monster_scale_multiplyer * Vector2(x_direction, y_direction)))
+	
+	return positions
+	
 
 func _spawn_monster():
 	var location: Vector2 = _get_spawn_location()
@@ -111,7 +154,16 @@ func _get_spawn_location() -> Vector2:
 		return player.position + Vector2(rand_x,rand_y_positions.pick_random())
 
 	var rand_y = randi_range(rand_y_positions[0], rand_y_positions[1])
-	return player.position + Vector2(rand_x_positions.pick_random(),rand_y)
+	var base_position = Vector2.ZERO
+	if player:
+		base_position = player.position
+	return base_position + Vector2(rand_x_positions.pick_random(),rand_y)
+
+func _spawn_boss_at(position: Vector2, boss_resource: Resource):
+	var boss_instance: BossMonster = boss_resource.instantiate()
+	boss_instance.global_position = position
+	spawner.add_child(boss_instance)
+	return boss_instance
 
 func _spawn_boss(boss_resource: Resource) -> BossMonster:
 	var boss_instance: BossMonster = boss_resource.instantiate()
@@ -121,8 +173,12 @@ func _spawn_boss(boss_resource: Resource) -> BossMonster:
 	return boss_instance
 	
 func _spawn_main_boss(boss_resource: Resource):
-		var spawned_boss = _spawn_boss(boss_resource)
-		spawned_boss.boss_died.connect(game_over)
+	var spawned_boss = _spawn_boss(boss_resource)
+	spawned_boss.boss_died.connect(game_win())
+
+func _spawn_random_boss():
+	var boss = [sudo_resource, sudo_resource, kok_resource].pick_random()
+	_spawn_boss(boss)
 
 
 func _process(_delta: float) -> void:

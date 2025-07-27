@@ -14,6 +14,9 @@ var move_speed: float = 100 * GameManager.skill_manager.monster_speed_multiplyer
 var move_speed_mult: float = 2
 
 func _ready() -> void:
+	var new_hp: int = health.max_health + ceil(float(GameManager.player.current_level) / 5)
+	health.health = new_hp
+	health.max_health = new_hp
 	health.health_depleted.connect(perish)
 	scale =  default_scale * Vector2.ONE
 
@@ -36,7 +39,8 @@ func move_monster(delta) -> void:
 
 
 func perish() -> void:
-	GameManager.player.current_exp += _exp_value
+	var exp_to_add = _exp_value * ceil(float(GameManager.player.current_level) / 5)
+	GameManager.player.add_exp(exp_to_add)
 	queue_free()
 
 
