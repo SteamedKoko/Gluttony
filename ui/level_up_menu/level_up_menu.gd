@@ -18,6 +18,7 @@ func opt_for_skill() -> void:
 
 
 func finish_skill_choice(skill: SkillManager.skills, detriment: SkillManager.detriments) -> void:
+	print('finish skills')
 	print('active pauses ', GameManager.active_pauses)
 	print('levels ', levels_left)
 	self.visible = false
@@ -35,13 +36,14 @@ func finish_skill_choice(skill: SkillManager.skills, detriment: SkillManager.det
 	GameManager.unpause()
 
 func populate_random_skills():
+	print('populate skills')
 	var skills = GameManager.skill_manager.get_random_skills(skill_options_to_add)
 	var detriments = GameManager.skill_manager.get_random_detriments(skill_options_to_add)
 
 	var buttons = [
-			KEY_1,
-			KEY_2,
-			KEY_3
+			1,
+			2,
+			3
 		]
 
 	for skill in skills:

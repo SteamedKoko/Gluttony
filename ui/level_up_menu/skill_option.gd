@@ -13,7 +13,7 @@ func _ready() -> void:
 	%SkillSprite.texture = skill_info.get("icon")
 	%SkillDescription.text = skill_info.get("description")
 	%DetrimentDescription.text = detriment_info.get("name")
-	%TakeSkillButton.text = "Press " + str(button_number-48)
+	%TakeSkillButton.text = "Press " + str(button_number)
 	%TakeSkillButton.pressed.connect(pick_skill)
 
 
@@ -21,5 +21,5 @@ func pick_skill():
 	chose_skill.emit(skill, detriment)
 
 func _process(_delta: float) -> void:
-	if Input.is_key_pressed(button_number):
+	if Input.is_action_just_pressed(str(button_number)):
 		pick_skill()
