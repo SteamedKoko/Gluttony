@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameManager="*res://globals/game_manager.gd"
 GlobalSpriteAssets="*res://globals/global_sprite_assets.gd"
 DamageNumber="*res://globals/damage_number.gd"
+MusicPlayer="*res://globals/MusicPlayer.tscn"
 
 [display]
 

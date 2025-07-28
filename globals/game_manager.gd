@@ -40,9 +40,13 @@ var batch_spawn_formation = {
 }
 
 func _ready() -> void:
+	#TODO fix post and pausing all busted up with menus
 	load_up_shiat()
-	game_win()
+	load_test()
 
+func load_test() -> void:
+	for i in range(600):
+		_spawn_monster()
 
 func load_up_shiat():
 	spawner = spawner_resource.instantiate()
@@ -59,6 +63,7 @@ func load_up_shiat():
 	batch_spawn_timer.autostart = true
 	batch_spawn_timer.timeout.connect(_spawn_batch_monsters)
 	add_child(batch_spawn_timer)
+	unpause()
 
 func pause():
 	get_tree().paused = true
@@ -70,14 +75,14 @@ func unpause():
 		get_tree().paused = false
 
 func game_over():
-	var gover: Control = get_tree().get_first_node_in_group("GameOver")
+	var gover: GameOverMenu = get_tree().get_first_node_in_group("GameOver")
 	pause()
-	gover.visible = true
+	gover.show_menu()
 
 func game_win():
 	pause()
 	#clear minions, play the scene and continue with bosses
-	var gwin: Control = get_tree().get_first_node_in_group("GameWin")
+	var gwin: GameWinMenu = get_tree().get_first_node_in_group("GameWin")
 	for child in spawner.get_children():
 		child.queue_free()
 
@@ -86,7 +91,7 @@ func game_win():
 	general_spawn_timer.timeout.connect(_spawn_random_boss)
 	batch_spawn_timer.timeout.connect(_spawn_batch_bosses)
 
-	gwin.visible = true
+	gwin.show_menu()
 
 func continue_boss_mode():
 	unpause()
@@ -111,6 +116,9 @@ func increase_spawn_speed():
 
 
 func _spawn_batch_monsters():
+	if spawner.get_children().size() > max_monsters_to_spawn:
+		return
+
 	var positions = _get_batch_positions()
 	for position in positions:
 		var sprite_enum = GlobalSpriteAssets.get_random_monster_enum()
@@ -143,7 +151,11 @@ func _get_batch_positions() -> Array[Vector2]:
 	return positions
 	
 
+var max_monsters_to_spawn: int = 500
+
 func _spawn_monster():
+	if spawner.get_children().size() > max_monsters_to_spawn:
+		return
 	var location: Vector2 = _get_spawn_location()
 	spawner._spawn_random_monster(location)
 
@@ -174,7 +186,7 @@ func _spawn_boss(boss_resource: Resource) -> BossMonster:
 	
 func _spawn_main_boss(boss_resource: Resource):
 	var spawned_boss = _spawn_boss(boss_resource)
-	spawned_boss.boss_died.connect(game_win())
+	spawned_boss.boss_died.connect(game_win)
 
 func _spawn_random_boss():
 	var boss = [sudo_resource, sudo_resource, kok_resource].pick_random()

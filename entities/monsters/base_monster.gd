@@ -30,8 +30,8 @@ func move_monster(delta) -> void:
 		var direction = (GameManager.player.global_position - global_position).normalized()
 		velocity = velocity.move_toward(direction * move_speed, acceleration * delta)
 
-	if soft_collision and soft_collision.is_colliding():
-		velocity += soft_collision.get_push_vector() * delta * push_strength
+	# if soft_collision and soft_collision.is_colliding():
+	# 	velocity += soft_collision.get_push_vector() * delta * push_strength
 
 	velocity.x = clamp(velocity.x, -move_speed * move_speed_mult, move_speed * move_speed_mult)
 	velocity.y = clamp(velocity.y, -move_speed * move_speed_mult, move_speed * move_speed_mult)

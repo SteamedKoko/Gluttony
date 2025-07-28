@@ -8,18 +8,18 @@ const skill_options_to_add = 3
 func _ready() -> void:
 	GameManager.player.leveled_up.connect(func (): levels_left += 1)
 	visible = false
-	opt_for_skill()
+	levels_left += 1
 
 
 func opt_for_skill() -> void:
-	GameManager.pause()
-
 	#do this before it's visible so that it will be placed in the right spot
 	populate_random_skills()
 	self.visible = true
 
 
 func finish_skill_choice(skill: SkillManager.skills, detriment: SkillManager.detriments) -> void:
+	print('active pauses ', GameManager.active_pauses)
+	print('levels ', levels_left)
 	self.visible = false
 	for child in %SkillOptionContainer.get_children():
 		child.call_deferred('queue_free')
@@ -55,4 +55,5 @@ func populate_random_skills():
 
 func _process(_delta: float) -> void:
 	if levels_left > 0:
+		GameManager.pause()
 		opt_for_skill()

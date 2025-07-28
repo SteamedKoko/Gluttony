@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dm0gvvk0pgew3" path="res://ui/game_finish/game_win.gd" id="1_kq61y"]
 
 [node name="GameWin" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,7 +51,6 @@ vertical_alignment = 1
 
 [node name="RewardButton" type="Button" parent="ColorRect/MarginContainer/VBoxContainer" groups=["GameWin"]]
 unique_name_in_owner = true
-process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 text = "Receive reward"

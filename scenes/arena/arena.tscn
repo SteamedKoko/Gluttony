@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://gwslf667jj30"]
+[gd_scene load_steps=10 format=4 uid="uid://gwslf667jj30"]
 
+[ext_resource type="Script" uid="uid://0u84gnd3ecb5" path="res://scenes/arena/arena.gd" id="1_6w4xk"]
 [ext_resource type="TileSet" uid="uid://cm8jf80i4ndxv" path="res://scenes/tileset/overworld.tres" id="1_asdgj"]
 [ext_resource type="PackedScene" uid="uid://cetseqdkeuyvr" path="res://entities/player/player.tscn" id="3_5tue2"]
 [ext_resource type="PackedScene" uid="uid://co6ketbnvk6rd" path="res://ui/level_up_menu/level_up_menu.tscn" id="4_aj7ud"]
@@ -11,6 +12,7 @@
 
 [node name="Arena" type="Node2D" groups=["Stage"]]
 y_sort_enabled = true
+script = ExtResource("1_6w4xk")
 
 [node name="Player" parent="." instance=ExtResource("3_5tue2")]
 position = Vector2(1610, 1667)
@@ -34,11 +36,11 @@ layer = 5
 
 [node name="LevelUpMenu" parent="Popup" instance=ExtResource("4_aj7ud")]
 
-[node name="GameOver" parent="Popup" groups=["GameOver"] instance=ExtResource("4_u52cf")]
+[node name="GameOver" parent="Popup" instance=ExtResource("4_u52cf")]
 process_mode = 3
 z_index = 10
 
-[node name="GameWin" parent="Popup" instance=ExtResource("5_ii07k")]
+[node name="GameWin" parent="Popup" groups=["GameWin"] instance=ExtResource("5_ii07k")]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 3
