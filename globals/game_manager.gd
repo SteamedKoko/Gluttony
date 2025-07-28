@@ -66,12 +66,10 @@ func load_up_shiat():
 	unpause()
 
 func pause():
-	print('pause triggered')
 	get_tree().paused = true
 	active_pauses += 1
 
 func unpause():
-	print('unpause triggered')
 	active_pauses = max(0, active_pauses-1)
 	if active_pauses == 0:
 		get_tree().paused = false
