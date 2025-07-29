@@ -5,10 +5,10 @@ var monster_speed_multiplyer = 1
 var monster_scale_multiplyer = 1
 
 func _ready() -> void:
-	pass
 	# for i in range(20):
 	# 	add_skill(skills.FIRE)
 	# 	add_skill(skills.LIGHTNING)
+	pass
 
 enum skills {
 	# AURA, #todo

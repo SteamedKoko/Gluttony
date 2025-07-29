@@ -42,6 +42,7 @@ var batch_spawn_formation = {
 func _ready() -> void:
 	#TODO fix post and pausing all busted up with menus
 	load_up_shiat()
+	player.current_level = 19
 	# load_test()
 
 func load_test() -> void:
@@ -101,6 +102,8 @@ func restart():
 	for child in get_tree().get_first_node_in_group("Stage").get_children():
 		child.queue_free()
 
+	spawned_mini_boss = false
+	spawned_main_boss = false
 	general_spawn_timer.queue_free()
 	batch_spawn_timer.queue_free()
 	spawner.queue_free()

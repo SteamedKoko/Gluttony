@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgncdq8kvpbh8"]
 
 [ext_resource type="Script" uid="uid://kbc5i4ki4y8x" path="res://globals/music_player.gd" id="1_pj1n4"]
-[ext_resource type="AudioStream" uid="uid://bstm4oe7gyywp" path="res://music/mega.mp3" id="1_xq43w"]
 [ext_resource type="AudioStream" uid="uid://dr87pjti1ns1o" path="res://music/gym.mp3" id="2_pj1n4"]
+[ext_resource type="AudioStream" uid="uid://b0vfpcy78pj8u" path="res://music/mega_lower.mp3" id="3_24ffr"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_24ffr"]
 clip_count = 2
@@ -10,7 +10,7 @@ clip_0/name = &"Main"
 clip_0/stream = ExtResource("2_pj1n4")
 clip_0/auto_advance = 0
 clip_1/name = &"Post"
-clip_1/stream = ExtResource("1_xq43w")
+clip_1/stream = ExtResource("3_24ffr")
 clip_1/auto_advance = 0
 
 [node name="MusicPlayer" type="Node"]
