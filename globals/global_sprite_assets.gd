@@ -38,7 +38,7 @@ var MONSTER_RESOURCES: Dictionary = {
 	MonsterSprites.AVOCADO : { "resource" = preload("res://entities/monsters/sprites/avocado.png") },
 	MonsterSprites.BOBA: { "resource" = preload("res://entities/monsters/sprites/boba.png") },
 	MonsterSprites.BREAD: { "resource" = preload("res://entities/monsters/sprites/bread.png") },
-	MonsterSprites.CARROT_CAKE: { "resource" = preload("res://entities/monsters/sprites/carrot cake.png") },
+	MonsterSprites.CARROT_CAKE: { "resource" = preload("res://entities/monsters/sprites/carrot_cake.png") },
 	MonsterSprites.COFFEE: { "resource" = preload("res://entities/monsters/sprites/coffee.png") },
 	MonsterSprites.CORNDOG: { "resource" = preload("res://entities/monsters/sprites/corndog.png") },
 	MonsterSprites.DONUT: { "resource" = preload("res://entities/monsters/sprites/donut.png") },
@@ -54,7 +54,7 @@ var MONSTER_RESOURCES: Dictionary = {
 	MonsterSprites.PIE: { "resource" = preload("res://entities/monsters/sprites/pie.png") },
 	MonsterSprites.PIZZA: { "resource" = preload("res://entities/monsters/sprites/pizza.png") },
 	MonsterSprites.POPTART: { "resource" = preload("res://entities/monsters/sprites/poptart.png") },
-	MonsterSprites.SPRING_ONION: { "resource" = preload("res://entities/monsters/sprites/spring onion.png") },
+	MonsterSprites.SPRING_ONION: { "resource" = preload("res://entities/monsters/sprites/spring_onion.png") },
 	MonsterSprites.TEACUP: { "resource" = preload("res://entities/monsters/sprites/teacup.png" ) }
 }
 

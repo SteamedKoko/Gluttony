@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f7uxm15pdlqx"
-path="res://.godot/imported/spring onion.png-ec58edcf5d933b4778a760845c2334d0.ctex"
+uid="uid://dap0lwfftabqr"
+path="res://.godot/imported/carrot_cake.png-a9439cd169ca2d7af4b687d98975ae06.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/monsters/sprites/spring onion.png"
-dest_files=["res://.godot/imported/spring onion.png-ec58edcf5d933b4778a760845c2334d0.ctex"]
+source_file="res://entities/monsters/sprites/carrot_cake.png"
+dest_files=["res://.godot/imported/carrot_cake.png-a9439cd169ca2d7af4b687d98975ae06.ctex"]
 
 [params]
 

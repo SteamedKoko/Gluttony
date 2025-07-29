@@ -41,8 +41,8 @@ var batch_spawn_formation = {
 
 func _ready() -> void:
 	#TODO fix post and pausing all busted up with menus
+	print('hi')
 	load_up_shiat()
-	player.current_level = 19
 	# load_test()
 
 func load_test() -> void:
