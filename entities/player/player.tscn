@@ -24,6 +24,8 @@ animations = [{
 y_sort_enabled = true
 collision_layer = 0
 script = ExtResource("1_abrql")
+world_boundary_min = Vector2(28, 28)
+world_boundary_max = Vector2(3210, 3220)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, -2.5)

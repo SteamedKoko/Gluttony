@@ -8,6 +8,9 @@ extends CharacterBody2D
 @export var exp_per_level: int = 10
 @export var exp_scaling: float = 3
 
+@export var world_boundary_min: Vector2
+@export var world_boundary_max: Vector2
+
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health: Health = $Health
@@ -74,6 +77,10 @@ func add_exp(exp_to_add: float):
 
 func _physics_process(_delta: float) -> void:
 	get_movement()
+
+	position.x = clampf(position.x, world_boundary_min.x, world_boundary_max.x)
+	position.y = clampf(position.y, world_boundary_min.y, world_boundary_max.y)
+
 	move_and_slide()
 
 

@@ -17,9 +17,7 @@ game mechanics:
 
 
 today:
-    * vacuum
-    * enemies shoot death pellets
-    * make enemies lower health
+limit player to stay in world bounds
 
 
 Gluttony
@@ -36,6 +34,8 @@ work to do:
     * damaging aura
     * shoot death pellets - salt n pepper gun
 * detriments
+    * vacuum
+    * enemies shoot death pellets
 
 
 DONE

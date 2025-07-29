@@ -42,7 +42,7 @@ var batch_spawn_formation = {
 func _ready() -> void:
 	#TODO fix post and pausing all busted up with menus
 	load_up_shiat()
-	load_test()
+	# load_test()
 
 func load_test() -> void:
 	for i in range(600):
